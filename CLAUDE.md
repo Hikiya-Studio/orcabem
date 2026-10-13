@@ -35,7 +35,7 @@ Site de calculadoras grátis para profissionais autônomos brasileiros (pintor, 
 - `assets/ferramenta.css`: estilos comuns das calculadoras.
 - `assets/tema.js`: aplica o tema salvo antes da página aparecer. Cada calculadora tem seu `calculo.js` na própria pasta.
 - Segurança: cada página tem uma regra CSP (meta `Content-Security-Policy`) que só permite scripts do próprio site e do GoatCounter. Por isso não pode haver `<script>` embutido no HTML: todo script vai para um arquivo `.js`. Texto digitado pela pessoa que entra em HTML passa pela função `esc`.
-- `assets/app.js`: tema, instalação como app, campos de dinheiro (aceitam "6500", "22,50", "22.50" e mostram "6.500"), memória de valores (`orcaLembrar`), envio WhatsApp e copiar (`orcaEnvio`).
+- `assets/app.js`: tema, instalação como app, campos de dinheiro (aceitam "6500", "22,50", "22.50" e mostram "6.500"), memória de valores (`orcaLembrar`), envio WhatsApp e copiar (`orcaEnvio`). Linha opcional "Orçamento feito no orcabem.com.br" no fim da mensagem (`orcaAssinatura`, caixa `#assinatura` abaixo dos botões, ligada por padrão; a escolha fica em `orcabem:assinatura` e vale para todas as calculadoras). É o principal canal de divulgação: cada orçamento enviado chega a um cliente.
 - `manifest.webmanifest`, `sw.js`, ícones PNG: app instalável e uso sem internet. Ao mudar arquivos de forma que versões antigas quebrem, subir a versão `VERSAO` em `sw.js`.
 - `sitemap.xml` e `robots.txt`: atualizar o sitemap a cada página nova.
 - Links internos são relativos (funcionam no endereço provisório e no domínio).
@@ -44,7 +44,7 @@ Site de calculadoras grátis para profissionais autônomos brasileiros (pintor, 
 
 ## Padrão de uma calculadora nova
 
-Página própria em `/nome-com-hifen/` (HTML + `calculo.js`, sem script embutido), com: título e descrição para o Google, `canonical` em orcabem.com.br, eyebrow "Para ...", campos com exemplo, resultado no bloco "RESULTADO", texto para o cliente, botões WhatsApp e Copiar, perguntas frequentes (ajudam no SEO), rodapé explicando o cálculo, bloco `FAQPage` com as mesmas perguntas, imagem de prévia (`og:image`, gerada pelo script), GoatCounter, entrada no sitemap, no `sw.js` e cartão na página inicial. Testar num navegador de celular (390px) nos modos claro e escuro antes de publicar.
+Página própria em `/nome-com-hifen/` (HTML + `calculo.js`, sem script embutido), com: título e descrição para o Google, `canonical` em orcabem.com.br, eyebrow "Para ...", campos com exemplo, resultado no bloco "RESULTADO", texto para o cliente terminando com `${assinatura()}`, botões WhatsApp e Copiar, caixa `#assinatura`, perguntas frequentes (ajudam no SEO), rodapé explicando o cálculo, bloco `FAQPage` com as mesmas perguntas, imagem de prévia (`og:image`, gerada pelo script), GoatCounter, entrada no sitemap, no `sw.js` e cartão na página inicial. Testar num navegador de celular (390px) nos modos claro e escuro antes de publicar.
 
 ## Pendências
 

@@ -4,6 +4,7 @@ const esc=t=>String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'
 const R=window.orcaReais||(id=>+String($(id).value).replace(/\./g,'').replace(',','.')||0);
 const FR=window.orcaFormataReais||(n=>String(n));
 const atualizaZap=window.orcaEnvio('texto');
+const assinatura=window.orcaAssinatura?window.orcaAssinatura(()=>calc()):()=>'';
 const brl=v=>v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
 const m2=v=>v.toLocaleString('pt-BR',{maximumFractionDigits:1})+' m²';
 let rooms=[
@@ -81,7 +82,7 @@ Mão de obra: ${brl(mao)}${mat>0?`\nMaterial (tinta): ${brl(mat)}`:'\nMaterial: 
 Prazo estimado: ${$('prazo').value||'-'} dias úteis
 Orçamento válido por 15 dias.
 
-${$('pintor').value}`;
+${$('pintor').value}${assinatura()}`;
   atualizaZap();
 }
 $('add').onclick=()=>{rooms.push({nome:'Novo cômodo',c:3,l:3,h:2.7,portas:1,janelas:1,teto:false});renderRooms();calc()};

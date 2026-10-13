@@ -116,6 +116,22 @@
     }
   };
 
+  /* Linha "feito no OrçaBem" no fim da mensagem (a pessoa pode desligar; a escolha vale para todas as calculadoras) */
+  window.orcaAssinatura = function (aoMudar) {
+    var caixa = document.getElementById('assinatura');
+    var ligada = true;
+    try { ligada = localStorage.getItem('orcabem:assinatura') !== 'nao'; } catch (e) {}
+    if (caixa) {
+      caixa.checked = ligada;
+      caixa.addEventListener('change', function () {
+        ligada = caixa.checked;
+        try { localStorage.setItem('orcabem:assinatura', ligada ? 'sim' : 'nao'); } catch (e) {}
+        if (aoMudar) aoMudar();
+      });
+    }
+    return function () { return ligada ? '\n\nOrçamento feito no orcabem.com.br' : ''; };
+  };
+
   /* Envio do texto: WhatsApp e copiar */
   window.orcaEnvio = function (idTexto) {
     var texto = document.getElementById(idTexto);

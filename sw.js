@@ -1,7 +1,7 @@
 /* OrçaBem: guarda as páginas para funcionarem sem internet.
    Páginas e arquivos do site: busca na rede primeiro (para receber atualizações) e usa a cópia guardada se estiver offline.
    Fontes: usa a cópia guardada e atualiza em segundo plano. */
-const VERSAO = 'orcabem-v6';
+const VERSAO = 'orcabem-v7';
 const ARQUIVOS = [
   './',
   './orcamento-pintura/',

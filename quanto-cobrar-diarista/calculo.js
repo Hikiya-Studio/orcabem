@@ -3,6 +3,7 @@ const $=id=>document.getElementById(id);
 const R=window.orcaReais||(id=>+String($(id).value).replace(/\./g,'').replace(',','.')||0);
 const FR=window.orcaFormataReais||(n=>String(n));
 const atualizaZap=window.orcaEnvio('texto');
+const assinatura=window.orcaAssinatura?window.orcaAssinatura(()=>calc()):()=>'';
 const brl=v=>v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
 function horasTxt(h){
   const t=Math.round(h*2)/2;
@@ -53,7 +54,7 @@ Tempo estimado: cerca de ${horasTxt(horas).replace(' h',' horas')}${ajuste?`\n${
 *Valor da diária: ${brl(total)}*
 
 Qualquer dúvida, estou à disposição.
-${$('nome').value}`;
+${$('nome').value}${assinatura()}`;
   atualizaZap();
 }
 document.querySelector('main').addEventListener('input',e=>{if(e.target.id!=='texto')calc()});

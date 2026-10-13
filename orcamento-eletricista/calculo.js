@@ -3,6 +3,7 @@ const $=id=>document.getElementById(id);
 const R=window.orcaReais||(id=>+String($(id).value).replace(/\./g,'').replace(',','.')||0);
 const FR=window.orcaFormataReais||(n=>String(n));
 const atualizaZap=window.orcaEnvio('texto');
+const assinatura=window.orcaAssinatura?window.orcaAssinatura(()=>calc()):()=>'';
 const brl=v=>v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
 const num=v=>v.toLocaleString('pt-BR',{maximumFractionDigits:2});
 
@@ -116,7 +117,7 @@ ${mat>0?`Material: ${brl(mat)}`:'Material: por conta do cliente'}${desl>0?`\nDes
 Prazo estimado: ${prazo} dia${prazo>1?'s':''} de serviço${garantia?`\nGarantia do serviço: ${garantia} dias`:''}
 Orçamento válido por 15 dias.
 
-${$('nome').value}`;
+${$('nome').value}${assinatura()}`;
   atualizaZap();
 }
 
