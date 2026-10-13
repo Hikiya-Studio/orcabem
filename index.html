@@ -30,8 +30,9 @@ h1{font-family:var(--display);font-weight:800;font-size:clamp(30px,8vw,44px);lin
 .tool:hover,.tool:focus-visible{border-color:var(--accent);outline:none}
 .tool b{font-family:var(--display);font-size:19px}
 .tool span{color:var(--muted);font-size:15px}
-.soon{opacity:.6}
-.tag{justify-self:start;background:var(--tape);color:var(--tape-fg);font-family:var(--display);font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:3px 10px;margin-bottom:4px}
+.soon b,.soon span:not(.tag){opacity:.7}
+.soon .tag{background:transparent;color:var(--muted);box-shadow:inset 0 0 0 1px var(--line)}
+.tool .tag{justify-self:start;background:var(--tape);color:var(--tape-fg);font-weight:700;font-family:var(--display);font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:3px 10px;margin-bottom:4px}
 footer{font-size:14px;color:var(--muted);border-top:1px solid var(--line);padding-top:14px}
 </style>
 </head>
