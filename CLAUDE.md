@@ -27,6 +27,7 @@ Site de calculadoras grátis para profissionais autônomos brasileiros (pintor, 
 - `index.html`: página inicial com a lista de ferramentas (cartões "Disponível" e "Em breve").
 - `orcamento-pintura/`: área de parede, tinta, mão de obra por m², material opcional, ajuste (extra ou desconto) com descrição.
 - `quanto-cobrar-diarista/`: horas estimadas por quartos, banheiros, tipo de faxina e extras; valor da hora, diária mínima, transporte, produtos, ajuste.
+- `orcamento-eletricista/`: lista de serviços (quantidade × preço por unidade; pontos de tomada e luz, troca, luminária, chuveiro, ventilador, disjuntor, circuito, quadro) e serviços extras com nome livre; valor mínimo do atendimento, deslocamento, material, prazo, garantia, ajuste. Os preços por serviço ficam guardados em `orcabem:eletricista-precos`.
 - `assets/ferramenta.css`: estilos comuns das calculadoras.
 - `assets/tema.js`: aplica o tema salvo antes da página aparecer. Cada calculadora tem seu `calculo.js` na própria pasta.
 - Segurança: cada página tem uma regra CSP (meta `Content-Security-Policy`) que só permite scripts do próprio site e do GoatCounter. Por isso não pode haver `<script>` embutido no HTML: todo script vai para um arquivo `.js`. Texto digitado pela pessoa que entra em HTML passa pela função `esc`.
@@ -41,6 +42,7 @@ Página própria em `/nome-com-hifen/` (HTML + `calculo.js`, sem script embutido
 
 ## Pendências
 
-- Domínio ligado em 13/10/2026 (arquivo `CNAME`). Falta: confirmar "Enforce HTTPS" em Settings → Pages e cadastrar no Google Search Console.
-- Próxima calculadora prevista: orçamento de instalação elétrica (cartão "Em breve" na página inicial).
+- Domínio ligado em 13/10/2026 (arquivo `CNAME`). Google Search Console verificado por DNS (registro TXT no Registro.br: não apagar) e sitemap enviado em 13/10/2026. Falta confirmar "Enforce HTTPS" em Settings → Pages.
+- Calculadora de eletricista publicada em 13/10/2026. Próxima calculadora ainda não escolhida.
+- Ideia: marcação `FAQPage` (dados estruturados) nas perguntas frequentes das calculadoras.
 - Monetização só depois de ter visitas: primeiro links de afiliado discretos, depois anúncios, depois versão paga (logo do profissional, PDF, histórico).

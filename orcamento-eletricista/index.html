@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://marinogneto.goatcounter.com; connect-src 'self' https://marinogneto.goatcounter.com https://fonts.googleapis.com https://fonts.gstatic.com; manifest-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Orçamento de Eletricista: calcule por ponto, grátis | OrçaBem</title>
+<meta name="description" content="Calculadora grátis para eletricistas: informe os pontos de tomada e de luz, chuveiro, disjuntores e outros serviços, e receba o orçamento pronto para mandar no WhatsApp.">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="manifest" href="../manifest.webmanifest">
+<meta name="theme-color" content="#1f4fa3">
+<link rel="canonical" href="https://orcabem.com.br/orcamento-eletricista/">
+<meta property="og:title" content="Orçamento de Eletricista grátis | OrçaBem">
+<meta property="og:description" content="Some pontos, chuveiro e disjuntores e mande o orçamento do serviço elétrico no WhatsApp em 2 minutos.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://orcabem.com.br/orcamento-eletricista/">
+<meta property="og:locale" content="pt_BR">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Figtree:wght@400;600;700&display=swap">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Orçamento de Eletricista","url":"https://orcabem.com.br/orcamento-eletricista/","applicationCategory":"BusinessApplication","operatingSystem":"Web","inLanguage":"pt-BR","offers":{"@type":"Offer","price":"0","priceCurrency":"BRL"}}
+</script>
+<script src="../assets/tema.js"></script>
+<link rel="stylesheet" href="../assets/ferramenta.css">
+</head>
+<body>
+
+<nav class="top"><a class="brand" href="../"><img src="../favicon.svg" alt="" width="28" height="28"><span class="name">orça<span>bem</span></span></a><div class="top-actions"><button class="install" id="instalar" type="button" hidden>Instalar app</button><button class="theme" id="tema" type="button">Modo</button></div></nav>
+<div class="ios-tip" id="dica-ios" hidden><p>No iPhone: toque em <b>Compartilhar</b> (o quadrado com a seta) e depois em <b>Adicionar à Tela de Início</b>.</p></div>
+<main class="wrap">
+  <header>
+    <div class="eyebrow">Para eletricistas</div>
+    <h1>Monte o orçamento do serviço elétrico em 2 minutos</h1>
+    <p class="lede">Diga quantos pontos de tomada e de luz, chuveiros, disjuntores e outros serviços vai fazer. A ferramenta soma tudo e monta o texto pronto para mandar no WhatsApp.</p>
+  </header>
+
+  <section>
+    <h2>Seus dados</h2>
+    <div class="grid2">
+      <label for="nome">Seu nome<input id="nome" value="Paulo Elétrica"></label>
+      <label for="cliente">Cliente<input id="cliente" value="Ana (exemplo)"></label>
+    </div>
+  </section>
+
+  <section>
+    <h2>Serviços</h2>
+    <p class="hint">Coloque a quantidade de cada serviço e o seu preço por unidade (só a mão de obra). Deixe 0 no que não vai fazer.</p>
+    <div class="itens">
+      <div class="item item-cab" aria-hidden="true"><span>Serviço</span><span>Qtd.</span><span>R$ cada</span></div>
+      <div id="itens" class="itens-lista"></div>
+    </div>
+    <button class="btn-add" id="add" type="button">+ Adicionar outro serviço</button>
+  </section>
+
+  <section>
+    <h2>Outros valores</h2>
+    <div class="grid2">
+      <label for="minimo">Valor mínimo do atendimento (R$)<input id="minimo" type="text" value="150" inputmode="decimal" autocomplete="off" data-reais></label>
+      <label for="deslocamento">Deslocamento (R$)<input id="deslocamento" type="text" value="0" inputmode="decimal" autocomplete="off" data-reais></label>
+      <label for="material">Material, se você comprar (R$)<input id="material" type="text" value="0" inputmode="decimal" autocomplete="off" data-reais></label>
+      <label for="prazo">Prazo estimado (dias)<input id="prazo" type="number" min="1" value="1" inputmode="numeric"></label>
+      <label for="garantia">Garantia do serviço (dias)<input id="garantia" type="number" min="0" value="90" inputmode="numeric"></label>
+    </div>
+    <p class="hint">O valor mínimo vale para serviços pequenos: se a soma da mão de obra der menos, o orçamento usa o mínimo. Material deixado em 0 aparece como "por conta do cliente".</p>
+    <div class="grid3 ajuste">
+      <label for="ajusteTipo">Ajuste no total
+        <select id="ajusteTipo"><option value="1">Extra (+)</option><option value="-1">Desconto (−)</option></select>
+      </label>
+      <label for="ajuste">Valor (R$)<input id="ajuste" type="text" value="0" inputmode="decimal" autocomplete="off" data-reais></label>
+      <label for="ajusteDesc">O que é<input id="ajusteDesc" placeholder="Ex.: quebra e reparo de parede" maxlength="60"></label>
+    </div>
+    <p class="hint">Opcional. Use "Extra" para cobrar algo a mais, como quebrar e fechar parede ou trabalhar no fim de semana. Use "Desconto" para, por exemplo, pagamento à vista. O que você escrever em "O que é" aparece no orçamento.</p>
+    <p class="hint">Os preços já preenchidos são só um exemplo. Use os seus: eles ficam guardados neste aparelho para a próxima vez. <button class="link" id="limpar-valores" type="button">Voltar ao exemplo</button></p>
+    <p class="hint">Para ter uma ideia: em 2026, um ponto de tomada novo costuma ficar entre R$ 45 e R$ 130 de mão de obra, e a instalação de chuveiro entre R$ 150 e R$ 300, mas o preço varia muito de uma região para outra.</p>
+  </section>
+
+  <div class="ticket" aria-live="polite">
+    <div id="rItens"></div>
+    <div class="row"><span>Mão de obra</span><span id="rMao">–</span></div>
+    <div class="row" id="rowMat"><span>Material</span><span id="rMat">–</span></div>
+    <div class="row" id="rowDesl"><span>Deslocamento</span><span id="rDesl">–</span></div>
+    <div class="row" id="rowAjuste"><span id="rAjusteDesc">Ajuste</span><span id="rAjuste">–</span></div>
+    <div class="total"><b>Total do orçamento</b><span id="rTotal">–</span></div>
+    <p class="hint" id="aviso" hidden></p>
+  </div>
+
+  <section>
+    <h2>Texto para o cliente</h2>
+    <textarea id="texto" aria-label="Texto do orçamento"></textarea>
+    <div class="actions">
+      <a class="btn-zap" id="zap" href="https://wa.me/" target="_blank" rel="noopener">Enviar no WhatsApp</a>
+      <button id="copiar" type="button">Copiar texto</button>
+      <span class="toast" id="toast" hidden>Copiado. É só colar no WhatsApp.</span>
+    </div>
+  </section>
+
+  <section class="faq">
+    <h2>Perguntas frequentes</h2>
+    <h3>Quanto cobrar por ponto elétrico?</h3>
+    <p>Em 2026, a mão de obra de um ponto de tomada ou de luz novo costuma ficar entre R$ 45 e R$ 130 quando dá para passar o fio pelo conduíte que já existe. Se precisar quebrar parede, o ponto pode passar de R$ 200. Em serviços com muitos pontos, é comum cobrar menos por unidade.</p>
+    <h3>Como montar o orçamento de um serviço elétrico?</h3>
+    <p>Conte os pontos e os serviços no local, multiplique cada um pelo seu preço por unidade e some. Separe o material da mão de obra, para o cliente saber o que está pagando, e combine o prazo e a garantia por escrito.</p>
+    <h3>Vale a pena ter um valor mínimo de atendimento?</h3>
+    <p>Vale. Trocar uma tomada leva poucos minutos, mas você gasta tempo e dinheiro para ir até o cliente. O valor mínimo garante que a visita compense, mesmo quando o serviço é pequeno.</p>
+    <h3>Preciso dar garantia do serviço?</h3>
+    <p>Pelo Código de Defesa do Consumidor, o cliente tem 90 dias para reclamar de defeito em um serviço durável, como uma instalação elétrica. Por isso a garantia de 90 dias é a mais comum. Colocar isso no orçamento passa confiança.</p>
+  </section>
+
+  <footer>Cálculo estimado: cada serviço é a quantidade vezes o preço por unidade. Se a soma ficar abaixo do valor mínimo do atendimento, vale o mínimo. Depois entram material, deslocamento e ajuste. Confira a instalação no local antes de fechar o preço.</footer>
+</main>
+
+<script src="../assets/app.js"></script>
+<script src="calculo.js"></script>
+<script data-goatcounter="https://marinogneto.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+</body>
+</html>
