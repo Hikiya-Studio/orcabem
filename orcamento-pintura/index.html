@@ -66,6 +66,14 @@
       <label for="lata">Preço da lata de 18 L (R$, opcional)<input id="lata" type="number" min="0" step="1" value="0" inputmode="decimal"></label>
       <label for="prazo">Prazo estimado (dias)<input id="prazo" type="number" min="1" value="4" inputmode="numeric"></label>
     </div>
+    <div class="grid3 ajuste">
+      <label for="ajusteTipo">Ajuste no total
+        <select id="ajusteTipo"><option value="1">Extra (+)</option><option value="-1">Desconto (−)</option></select>
+      </label>
+      <label for="ajuste">Valor (R$)<input id="ajuste" type="number" min="0" step="1" value="0" inputmode="decimal"></label>
+      <label for="ajusteDesc">O que é<input id="ajusteDesc" placeholder="Ex.: reparo de trincas" maxlength="60"></label>
+    </div>
+    <p class="hint">Opcional. Use "Extra" para cobrar algo a mais, como reparo de trincas, deslocamento ou lona e fita. Use "Desconto" para, por exemplo, desconto no pagamento à vista. O que você escrever em "O que é" aparece no orçamento.</p>
     <p class="hint">Os valores já preenchidos são só um exemplo. Use o seu preço: ele fica guardado neste aparelho para a próxima vez. <button class="link" id="limpar-valores" type="button">Voltar ao exemplo</button></p>
     <p class="hint">Para ter uma ideia: em 2026, a repintura simples costuma ficar entre R$ 15 e R$ 45 por m² de parede, mas o preço varia muito de uma região para outra.</p>
   </section>
@@ -77,6 +85,7 @@
     <div class="row"><span>Tinta necessária</span><span id="rTinta">–</span></div>
     <div class="row"><span>Mão de obra</span><span id="rMao">–</span></div>
     <div class="row" id="rowMat"><span>Material (tinta)</span><span id="rMat">–</span></div>
+    <div class="row" id="rowAjuste"><span id="rAjusteDesc">Ajuste</span><span id="rAjuste">–</span></div>
     <div class="total"><b>Total do orçamento</b><span id="rTotal">–</span></div>
   </div>
 
@@ -154,7 +163,10 @@ function calc(){
   const mao=area*preco;
   const lata=+$('lata').value||0;
   const mat=lata>0?Math.ceil(litros/18)*lata:0;
-  const total=mao+mat;
+  const ajuste=Math.abs(+$('ajuste').value||0)*(+$('ajusteTipo').value||1);
+  const ajusteDesc=($('ajusteDesc').value||'').trim()||(ajuste<0?'Desconto':'Ajuste');
+  const total=Math.max(0,mao+mat+ajuste);
+  const sinal=v=>(v<0?'- ':'+ ')+brl(Math.abs(v));
   $('rParede').textContent=m2(parede);
   $('rTeto').textContent=m2(teto);
   $('rArea').textContent=m2(area);
@@ -162,6 +174,9 @@ function calc(){
   $('rMao').textContent=brl(mao);
   $('rowMat').hidden=!(lata>0);
   $('rMat').textContent=brl(mat);
+  $('rowAjuste').hidden=!ajuste;
+  $('rAjusteDesc').textContent=ajusteDesc;
+  $('rAjuste').textContent=sinal(ajuste);
   $('rTotal').textContent=brl(total);
   const tipo=$('tipo').selectedOptions[0].text;
   $('texto').value=
@@ -173,7 +188,7 @@ Serviço: ${tipo.toLowerCase()}, ${demaos} demão${demaos>1?'s':''}
 Área total: ${m2(area)}
 Tinta estimada: ${litros.toLocaleString('pt-BR',{maximumFractionDigits:0})} litros
 
-Mão de obra: ${brl(mao)}${mat>0?`\nMaterial (tinta): ${brl(mat)}`:'\nMaterial: por conta do cliente'}
+Mão de obra: ${brl(mao)}${mat>0?`\nMaterial (tinta): ${brl(mat)}`:'\nMaterial: por conta do cliente'}${ajuste?`\n${ajusteDesc}: ${sinal(ajuste)}`:''}
 *Total: ${brl(total)}*
 
 Prazo estimado: ${$('prazo').value||'-'} dias úteis
@@ -183,8 +198,9 @@ ${$('pintor').value}`;
   atualizaZap();
 }
 $('add').onclick=()=>{rooms.push({nome:'Novo cômodo',c:3,l:3,h:2.7,portas:1,janelas:1,teto:false});renderRooms();calc()};
+$('ajusteTipo').onchange=calc;
 $('tipo').onchange=()=>{$('preco').value=$('tipo').value;calc()};
-['preco','demaos','rend','lata','prazo','pintor','cliente'].forEach(id=>$(id).addEventListener('input',calc));
+['preco','demaos','rend','lata','prazo','pintor','cliente','ajuste','ajusteDesc','ajusteTipo'].forEach(id=>$(id).addEventListener('input',calc));
 if(window.orcaLembrar)window.orcaLembrar('pintura',['pintor','tipo','preco','demaos','rend','lata','prazo'],calc);
 renderRooms();calc();
 </script>
