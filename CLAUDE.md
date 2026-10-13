@@ -13,6 +13,7 @@ Site de calculadoras grátis para profissionais autônomos brasileiros (pintor, 
 - Tudo o que o público vê é em português; endereços sem acento, com hífen (`/orcamento-pintura/`).
 - Sem cadastro, sem login. Nada é enviado para servidor: valores ficam só no aparelho (localStorage).
 - Os preços pré-preenchidos são exemplos. Quem decide o preço é o profissional; as calculadoras guardam os valores dele no aparelho e têm "Voltar ao exemplo". Não fazer tabela de preços por estado (não temos dados confiáveis).
+- Faixas de preço com ano ("em 2026, costuma ficar entre...") só aparecem no texto: na dica "Para ter uma ideia" e nas perguntas frequentes. Nunca colocar o ano no título, na descrição para o Google, no h1 nem no endereço. Revisão anual em janeiro: atualizar o ano e as faixas em todas as calculadoras (há uma tarefa agendada para 05/01/2027 que abre um pull request com essa revisão).
 
 ## Marca e visual
 
