@@ -19,6 +19,7 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebApplication","name":"Orçamento de Pintura","url":"https://orcabem.com.br/orcamento-pintura/","applicationCategory":"BusinessApplication","operatingSystem":"Web","inLanguage":"pt-BR","offers":{"@type":"Offer","price":"0","priceCurrency":"BRL"}}
 </script>
+<script>try{var t=localStorage.getItem('tema');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 <style>
 /* Layout: one narrow column — form of rooms on top, a "fita crepe" result ticket below, copy-to-WhatsApp text last */
 :root{
@@ -70,13 +71,15 @@ footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);paddin
 .top{max-width:640px;margin:0 auto;padding-inline:16px;padding-block:14px 0;display:flex;justify-content:space-between;align-items:center}
 .brand{font-family:var(--display);font-weight:800;font-size:20px;color:var(--fg);text-decoration:none;letter-spacing:-.01em}
 .brand span{color:var(--accent)}
+.theme{font:inherit;font-size:14px;cursor:pointer;background:var(--surface);color:var(--fg);border:1px solid var(--line);border-radius:999px;padding:6px 12px}
+.theme:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .faq h3{font-family:var(--display);font-size:16px;margin:10px 0 2px}
 .faq p{margin:0;color:var(--muted);max-width:62ch}
 </style>
 </head>
 <body>
 
-<nav class="top"><a class="brand" href="../">orça<span>bem</span></a></nav>
+<nav class="top"><a class="brand" href="../">orça<span>bem</span></a><button class="theme" id="tema" type="button">Modo</button></nav>
 <main class="wrap">
   <header>
     <div class="eyebrow">Para pintores autônomos</div>
@@ -237,5 +240,9 @@ $('copiar').onclick=()=>{
 renderRooms();calc();
 </script>
 
+<script>(function(){var b=document.getElementById('tema');if(!b)return;var r=document.documentElement;
+function atual(){var t=r.getAttribute('data-theme');if(t)return t;return matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}
+function rot(){b.textContent=atual()==='dark'?'☀ Modo claro':'☾ Modo escuro'}
+b.addEventListener('click',function(){var n=atual()==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem('tema',n)}catch(e){}rot()});rot()})();</script>
 </body>
 </html>
