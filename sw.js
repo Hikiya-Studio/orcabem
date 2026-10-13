@@ -1,13 +1,16 @@
 /* OrçaBem: guarda as páginas para funcionarem sem internet.
    Páginas e arquivos do site: busca na rede primeiro (para receber atualizações) e usa a cópia guardada se estiver offline.
    Fontes: usa a cópia guardada e atualiza em segundo plano. */
-const VERSAO = 'orcabem-v3';
+const VERSAO = 'orcabem-v4';
 const ARQUIVOS = [
   './',
   './orcamento-pintura/',
   './quanto-cobrar-diarista/',
   './assets/ferramenta.css',
   './assets/app.js',
+  './assets/tema.js',
+  './orcamento-pintura/calculo.js',
+  './quanto-cobrar-diarista/calculo.js',
   './favicon.svg',
   './apple-touch-icon.png',
   './icone-192.png',

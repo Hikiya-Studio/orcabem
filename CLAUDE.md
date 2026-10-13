@@ -28,6 +28,8 @@ Site de calculadoras grátis para profissionais autônomos brasileiros (pintor, 
 - `orcamento-pintura/`: área de parede, tinta, mão de obra por m², material opcional, ajuste (extra ou desconto) com descrição.
 - `quanto-cobrar-diarista/`: horas estimadas por quartos, banheiros, tipo de faxina e extras; valor da hora, diária mínima, transporte, produtos, ajuste.
 - `assets/ferramenta.css`: estilos comuns das calculadoras.
+- `assets/tema.js`: aplica o tema salvo antes da página aparecer. Cada calculadora tem seu `calculo.js` na própria pasta.
+- Segurança: cada página tem uma regra CSP (meta `Content-Security-Policy`) que só permite scripts do próprio site e do GoatCounter. Por isso não pode haver `<script>` embutido no HTML: todo script vai para um arquivo `.js`. Texto digitado pela pessoa que entra em HTML passa pela função `esc`.
 - `assets/app.js`: tema, instalação como app, campos de dinheiro (aceitam "6500", "22,50", "22.50" e mostram "6.500"), memória de valores (`orcaLembrar`), envio WhatsApp e copiar (`orcaEnvio`).
 - `manifest.webmanifest`, `sw.js`, ícones PNG: app instalável e uso sem internet. Ao mudar arquivos de forma que versões antigas quebrem, subir a versão `VERSAO` em `sw.js`.
 - `sitemap.xml` e `robots.txt`: atualizar o sitemap a cada página nova.
@@ -35,7 +37,7 @@ Site de calculadoras grátis para profissionais autônomos brasileiros (pintor, 
 
 ## Padrão de uma calculadora nova
 
-Página própria em `/nome-com-hifen/`, com: título e descrição para o Google, `canonical` em orcabem.com.br, eyebrow "Para ...", campos com exemplo, resultado no bloco "RESULTADO", texto para o cliente, botões WhatsApp e Copiar, perguntas frequentes (ajudam no SEO), rodapé explicando o cálculo, GoatCounter, entrada no sitemap, no `sw.js` e cartão na página inicial. Testar num navegador de celular (390px) nos modos claro e escuro antes de publicar.
+Página própria em `/nome-com-hifen/` (HTML + `calculo.js`, sem script embutido), com: título e descrição para o Google, `canonical` em orcabem.com.br, eyebrow "Para ...", campos com exemplo, resultado no bloco "RESULTADO", texto para o cliente, botões WhatsApp e Copiar, perguntas frequentes (ajudam no SEO), rodapé explicando o cálculo, GoatCounter, entrada no sitemap, no `sw.js` e cartão na página inicial. Testar num navegador de celular (390px) nos modos claro e escuro antes de publicar.
 
 ## Pendências
 
