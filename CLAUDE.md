@@ -13,7 +13,7 @@ Site de calculadoras grátis para profissionais autônomos brasileiros (pintor, 
 - Tudo o que o público vê é em português; endereços sem acento, com hífen (`/orcamento-pintura/`).
 - Sem cadastro, sem login. Nada é enviado para servidor: valores ficam só no aparelho (localStorage).
 - Os preços pré-preenchidos são exemplos. Quem decide o preço é o profissional; as calculadoras guardam os valores dele no aparelho e têm "Voltar ao exemplo". Não fazer tabela de preços por estado (não temos dados confiáveis).
-- Faixas de preço com ano ("em 2026, costuma ficar entre...") só aparecem no texto: na dica "Para ter uma ideia" e nas perguntas frequentes. Nunca colocar o ano no título, na descrição para o Google, no h1 nem no endereço. Revisão anual em janeiro: atualizar o ano e as faixas em todas as calculadoras (há uma tarefa agendada para 05/01/2027 que abre um pull request com essa revisão).
+- Faixas de preço com ano ("em 2026, costuma ficar entre...") só aparecem no texto: na dica "Para ter uma ideia" e nas perguntas frequentes. Nunca colocar o ano no título, na descrição para o Google, no h1 nem no endereço. Revisão anual em janeiro: atualizar o ano e as faixas em todas as calculadoras e o bloco `FAQPage` junto; há uma tarefa agendada para 05/01/2027 que abre um pull request com essa revisão.
 
 ## Marca e visual
 
@@ -36,14 +36,15 @@ Site de calculadoras grátis para profissionais autônomos brasileiros (pintor, 
 - `manifest.webmanifest`, `sw.js`, ícones PNG: app instalável e uso sem internet. Ao mudar arquivos de forma que versões antigas quebrem, subir a versão `VERSAO` em `sw.js`.
 - `sitemap.xml` e `robots.txt`: atualizar o sitemap a cada página nova.
 - Links internos são relativos (funcionam no endereço provisório e no domínio).
+- Imagens de prévia para compartilhar (WhatsApp/Facebook): `assets/previa-<nome>.jpg`, 1200×630, geradas por `_ferramentas/gerar-previas.py` (a pasta `_ferramentas` não é publicada). Cada página tem `og:image` com endereço completo em orcabem.com.br.
+- Perguntas frequentes também ficam num bloco `FAQPage` (ld+json) no `<head>`. Ao mudar o texto de uma pergunta, mudar o bloco junto.
 
 ## Padrão de uma calculadora nova
 
-Página própria em `/nome-com-hifen/` (HTML + `calculo.js`, sem script embutido), com: título e descrição para o Google, `canonical` em orcabem.com.br, eyebrow "Para ...", campos com exemplo, resultado no bloco "RESULTADO", texto para o cliente, botões WhatsApp e Copiar, perguntas frequentes (ajudam no SEO), rodapé explicando o cálculo, GoatCounter, entrada no sitemap, no `sw.js` e cartão na página inicial. Testar num navegador de celular (390px) nos modos claro e escuro antes de publicar.
+Página própria em `/nome-com-hifen/` (HTML + `calculo.js`, sem script embutido), com: título e descrição para o Google, `canonical` em orcabem.com.br, eyebrow "Para ...", campos com exemplo, resultado no bloco "RESULTADO", texto para o cliente, botões WhatsApp e Copiar, perguntas frequentes (ajudam no SEO), rodapé explicando o cálculo, bloco `FAQPage` com as mesmas perguntas, imagem de prévia (`og:image`, gerada pelo script), GoatCounter, entrada no sitemap, no `sw.js` e cartão na página inicial. Testar num navegador de celular (390px) nos modos claro e escuro antes de publicar.
 
 ## Pendências
 
-- Domínio ligado em 13/10/2026 (arquivo `CNAME`). Google Search Console verificado por DNS (registro TXT no Registro.br: não apagar) e sitemap enviado em 13/10/2026. Falta confirmar "Enforce HTTPS" em Settings → Pages.
+- Domínio ligado em 13/10/2026 (arquivo `CNAME`). Google Search Console verificado por DNS (registro TXT no Registro.br: não apagar) e sitemap enviado em 13/10/2026. "Enforce HTTPS" ativado.
 - Calculadora de eletricista publicada em 13/10/2026. Próxima calculadora ainda não escolhida.
-- Ideia: marcação `FAQPage` (dados estruturados) nas perguntas frequentes das calculadoras.
 - Monetização só depois de ter visitas: primeiro links de afiliado discretos, depois anúncios, depois versão paga (logo do profissional, PDF, histórico).
