@@ -39,6 +39,6 @@ Página própria em `/nome-com-hifen/`, com: título e descrição para o Google
 
 ## Pendências
 
-- Ligar o domínio: quando o DNS responder, criar o arquivo `CNAME` com `orcabem.com.br` e o dono marca "Enforce HTTPS" em Settings → Pages. Depois, cadastrar no Google Search Console.
+- Domínio ligado em 13/10/2026 (arquivo `CNAME`). Falta: confirmar "Enforce HTTPS" em Settings → Pages e cadastrar no Google Search Console.
 - Próxima calculadora prevista: orçamento de instalação elétrica (cartão "Em breve" na página inicial).
 - Monetização só depois de ter visitas: primeiro links de afiliado discretos, depois anúncios, depois versão paga (logo do profissional, PDF, histórico).
