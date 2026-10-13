@@ -29,6 +29,8 @@ Site de calculadoras grátis para profissionais autônomos brasileiros (pintor, 
 - `orcamento-pintura/`: área de parede, tinta, mão de obra por m², material opcional, ajuste (extra ou desconto) com descrição.
 - `quanto-cobrar-diarista/`: horas estimadas por quartos, banheiros, tipo de faxina e extras; valor da hora, diária mínima, transporte, produtos, ajuste.
 - `orcamento-eletricista/`: lista de serviços (quantidade × preço por unidade; pontos de tomada e luz, troca, luminária, chuveiro, ventilador, disjuntor, circuito, quadro) e serviços extras com nome livre; valor mínimo do atendimento, deslocamento, material, prazo, garantia, ajuste. Os preços por serviço ficam guardados em `orcabem:eletricista-precos`.
+- `privacidade/`: página de privacidade em linguagem simples (localStorage, WhatsApp, GoatCounter sem cookies e sem IP, Google Fonts, LGPD). Link "Privacidade" no rodapé de todas as páginas. Atualizar antes de qualquer mudança no uso de dados (anúncios, afiliados com rastreio, formulário de contato).
+- `404.html`: página de "não encontrado" do GitHub Pages. Usa links que começam com `/` (não relativos), porque aparece em qualquer pasta. Ao criar uma calculadora, acrescentar o link nela.
 - `assets/ferramenta.css`: estilos comuns das calculadoras.
 - `assets/tema.js`: aplica o tema salvo antes da página aparecer. Cada calculadora tem seu `calculo.js` na própria pasta.
 - Segurança: cada página tem uma regra CSP (meta `Content-Security-Policy`) que só permite scripts do próprio site e do GoatCounter. Por isso não pode haver `<script>` embutido no HTML: todo script vai para um arquivo `.js`. Texto digitado pela pessoa que entra em HTML passa pela função `esc`.
@@ -47,5 +49,8 @@ Página própria em `/nome-com-hifen/` (HTML + `calculo.js`, sem script embutido
 
 - Domínio ligado em 13/10/2026 (arquivo `CNAME`). Google Search Console verificado por DNS (registro TXT no Registro.br: não apagar) e sitemap enviado em 13/10/2026. "Enforce HTTPS" ativado.
 - Calculadora de eletricista publicada em 13/10/2026. Próxima calculadora ainda não escolhida.
+- Contato: o Marino vai criar um e-mail (ou WhatsApp) só para o OrçaBem. Depois, colocar no rodapé de todas as páginas e na página de privacidade.
+- Domínio vence em 13/10/2027: conferir a renovação automática no Registro.br.
+- Bing Webmaster Tools configurado em 13/10/2026 (importado do Search Console).
 - Monetização só depois de ter visitas: primeiro links de afiliado discretos, depois anúncios, depois versão paga (logo do profissional, PDF, histórico).
 - Divulgação cruzada com o sistema de agenda da Hikiya (AgendarBem, agendarbem.com.br), só quando ele estiver no ar: linha discreta no rodapé ("Da mesma equipe: ...") e sugestão contextual depois do resultado da diarista. Nada de banner no meio das calculadoras.
