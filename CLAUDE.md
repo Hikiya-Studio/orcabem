@@ -18,7 +18,7 @@ Site de calculadoras grátis para profissionais autônomos brasileiros (pintor, 
 ## Marca e visual
 
 - Nome: "OrçaBem" em textos e títulos; logo escrito "orçabem" minúsculo com "bem" em azul, ao lado do ícone.
-- Crédito discreto no fim do rodapé de todas as páginas: "OrçaBem é um projeto da Hikiya Studio." (classe `credito`, sem ano). Sem link enquanto o estúdio não tiver site.
+- Crédito discreto no fim do rodapé de todas as páginas: "OrçaBem é um projeto do Hikiya Studio." (classe `credito`, sem ano). Sem link enquanto o estúdio não tiver site.
 - Ícone: quadrado azul com um "o" branco e sinal de certo amarelo (`favicon.svg`). Não usar símbolos de uma profissão só.
 - Cores (claro): fundo #f3f1ec, superfície #fffdf8, texto #1d2433, azul #1f4fa3, amarelo "fita" #e7c873. Modo escuro com tokens próprios. Segue o sistema do aparelho e tem botão para trocar.
 - Fontes: Archivo (títulos e números) e Figtree (texto). Evitar fontes com zero cortado.
