@@ -86,3 +86,4 @@ footer a{color:var(--accent)}
 .lista-links a{display:block;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;color:var(--fg);font-family:var(--display);font-weight:700;font-size:17px;text-decoration:none}
 .lista-links a:hover,.lista-links a:focus-visible{border-color:var(--accent);outline:none}
 .btn-voltar{display:inline-block;background:var(--accent);color:var(--bg);font-weight:700;text-decoration:none;border-radius:8px;padding:10px 16px}
+.credito{display:block;margin-top:8px;font-size:12px}
