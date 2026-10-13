@@ -82,6 +82,14 @@
     </div>
     <p class="hint">Os valores já preenchidos são só um exemplo. Use os seus: eles ficam guardados neste aparelho para a próxima vez. <button class="link" id="limpar-valores" type="button">Voltar ao exemplo</button></p>
     <p class="hint">Para ter uma ideia: em 2026, a diária de faxina completa costuma ficar entre R$ 150 e R$ 200 nas capitais e entre R$ 130 e R$ 180 no interior, mas o valor varia muito de uma cidade para outra.</p>
+    <div class="grid3 ajuste">
+      <label for="ajusteTipo">Ajuste na diária
+        <select id="ajusteTipo"><option value="1">Extra (+)</option><option value="-1">Desconto (−)</option></select>
+      </label>
+      <label for="ajuste">Valor (R$)<input id="ajuste" type="number" min="0" step="1" value="0" inputmode="decimal"></label>
+      <label for="ajusteDesc">O que é<input id="ajusteDesc" placeholder="Ex.: desconto cliente fixo" maxlength="60"></label>
+    </div>
+    <p class="hint">Opcional. Use "Extra" para cobrar algo a mais, como um local de difícil acesso ou uma faxina em feriado. Use "Desconto" para, por exemplo, um cliente fixo que chama toda semana. O que você escrever em "O que é" aparece no orçamento.</p>
   </section>
 
   <div class="ticket" aria-live="polite">
@@ -89,6 +97,7 @@
     <div class="row"><span>Trabalho</span><span id="rTrabalho">–</span></div>
     <div class="row"><span>Transporte</span><span id="rTransp">–</span></div>
     <div class="row" id="rowProd"><span>Produtos de limpeza</span><span id="rProd">–</span></div>
+    <div class="row" id="rowAjuste"><span id="rAjusteDesc">Ajuste</span><span id="rAjuste">–</span></div>
     <div class="total"><b>Diária sugerida</b><span id="rTotal">–</span></div>
     <p class="hint" id="aviso" hidden></p>
   </div>
@@ -140,12 +149,19 @@ function calc(){
   const minimo=+$('minimo').value||0;
   const trabalho=horas*hora;
   const conta=Math.ceil((trabalho+transp+prod)/5)*5;
-  const total=Math.max(conta,minimo);
+  const base=Math.max(conta,minimo);
+  const ajuste=Math.abs(+$('ajuste').value||0)*(+$('ajusteTipo').value||1);
+  const ajusteDesc=($('ajusteDesc').value||'').trim()||(ajuste<0?'Desconto':'Extra');
+  const sinal=v=>(v<0?'- ':'+ ')+brl(Math.abs(v));
+  const total=Math.max(0,base+ajuste);
   $('rTempo').textContent=horasTxt(horas);
   $('rTrabalho').textContent=brl(trabalho);
   $('rTransp').textContent=brl(transp);
   $('rowProd').hidden=!(prod>0);
   $('rProd').textContent=brl(prod);
+  $('rowAjuste').hidden=!ajuste;
+  $('rAjusteDesc').textContent=ajusteDesc;
+  $('rAjuste').textContent=sinal(ajuste);
   $('rTotal').textContent=brl(total);
   const avisos=[];
   if(conta<minimo)avisos.push('A conta deu '+brl(conta)+', abaixo da sua diária mínima. O valor sugerido usa o mínimo.');
@@ -160,7 +176,7 @@ function calc(){
 Imóvel: ${casa}
 Tipo: ${tipo.toLowerCase()}${extras.length?`\nInclui também: ${extras.join(', ')}`:''}
 Produtos de limpeza: ${prod>0?'incluídos':'por conta do cliente'}
-Tempo estimado: cerca de ${horasTxt(horas).replace(' h',' horas')}
+Tempo estimado: cerca de ${horasTxt(horas).replace(' h',' horas')}${ajuste?`\n${ajusteDesc}: ${sinal(ajuste)}`:''}
 
 *Valor da diária: ${brl(total)}*
 
