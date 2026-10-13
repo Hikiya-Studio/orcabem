@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Quanto cobrar de diária de diarista: calculadora grátis | OrçaBem</title>
+<meta name="description" content="Calcule quanto cobrar de diária de faxina pelo tamanho da casa, tipo de limpeza, extras e transporte. Receba o orçamento pronto para mandar no WhatsApp.">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="manifest" href="../manifest.webmanifest">
+<meta name="theme-color" content="#1f4fa3">
+<link rel="canonical" href="https://orcabem.com.br/quanto-cobrar-diarista/">
+<meta property="og:title" content="Quanto cobrar de diária de diarista | OrçaBem">
+<meta property="og:description" content="Calcule a diária pela casa, tipo de faxina e extras, e mande o orçamento no WhatsApp.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://orcabem.com.br/quanto-cobrar-diarista/">
+<meta property="og:locale" content="pt_BR">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Figtree:wght@400;600;700&display=swap">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Quanto cobrar de diária de diarista","url":"https://orcabem.com.br/quanto-cobrar-diarista/","applicationCategory":"BusinessApplication","operatingSystem":"Web","inLanguage":"pt-BR","offers":{"@type":"Offer","price":"0","priceCurrency":"BRL"}}
+</script>
+<script>try{var t=localStorage.getItem('tema');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<link rel="stylesheet" href="../assets/ferramenta.css">
+</head>
+<body>
+
+<nav class="top"><a class="brand" href="../"><img src="../favicon.svg" alt="" width="28" height="28"><span class="name">orça<span>bem</span></span></a><div class="top-actions"><button class="install" id="instalar" type="button" hidden>Instalar app</button><button class="theme" id="tema" type="button">Modo</button></div></nav>
+<div class="ios-tip" id="dica-ios" hidden><p>No iPhone: toque em <b>Compartilhar</b> (o quadrado com a seta) e depois em <b>Adicionar à Tela de Início</b>.</p></div>
+<main class="wrap">
+  <header>
+    <div class="eyebrow">Para diaristas e faxineiras</div>
+    <h1>Quanto cobrar de diária? Calcule em 1 minuto</h1>
+    <p class="lede">Informe o tamanho da casa, o tipo de faxina e o que mais o cliente pediu. A ferramenta estima o tempo de trabalho, sugere o valor da diária e monta a mensagem para o WhatsApp.</p>
+  </header>
+
+  <section>
+    <h2>Seus dados</h2>
+    <div class="grid2">
+      <label for="nome">Seu nome<input id="nome" value="Maria Limpeza"></label>
+      <label for="cliente">Cliente<input id="cliente" value="Carlos (exemplo)"></label>
+    </div>
+  </section>
+
+  <section>
+    <h2>A casa</h2>
+    <p class="hint">Sala e cozinha já entram na conta. Os valores abaixo são um exemplo; troque pelos do seu serviço.</p>
+    <div class="grid2">
+      <label for="quartos">Quartos<input id="quartos" type="number" min="0" max="10" value="2" inputmode="numeric"></label>
+      <label for="banheiros">Banheiros<input id="banheiros" type="number" min="0" max="10" value="1" inputmode="numeric"></label>
+    </div>
+    <label for="tipo">Tipo de faxina
+      <select id="tipo">
+        <option value="1">Faxina padrão (casa em uso, manutenção)</option>
+        <option value="1.4">Faxina pesada (muita sujeira ou muito tempo sem limpar)</option>
+        <option value="1.3">Mudança (casa vazia, entrada ou saída)</option>
+        <option value="2">Pós-obra (pó de obra, respingos de tinta e cimento)</option>
+      </select>
+    </label>
+  </section>
+
+  <section>
+    <h2>Extras pedidos pelo cliente</h2>
+    <div class="extras" id="extras">
+      <label class="chk" for="x-roupa"><input id="x-roupa" type="checkbox" data-h="1.5" data-txt="passar roupa"> Passar roupa</label>
+      <label class="chk" for="x-geladeira"><input id="x-geladeira" type="checkbox" data-h="0.5" data-txt="limpar a geladeira por dentro" checked> Geladeira por dentro</label>
+      <label class="chk" for="x-forno"><input id="x-forno" type="checkbox" data-h="0.5" data-txt="limpar forno e fogão por dentro"> Forno e fogão por dentro</label>
+      <label class="chk" for="x-janelas"><input id="x-janelas" type="checkbox" data-h="1" data-txt="limpar janelas e vidros"> Janelas e vidros</label>
+      <label class="chk" for="x-armarios"><input id="x-armarios" type="checkbox" data-h="1" data-txt="organizar armários"> Organizar armários</label>
+      <label class="chk" for="x-externa"><input id="x-externa" type="checkbox" data-h="1" data-txt="limpar área externa ou quintal"> Área externa ou quintal</label>
+    </div>
+  </section>
+
+  <section>
+    <h2>Seus valores</h2>
+    <div class="grid2">
+      <label for="hora">Quanto vale sua hora (R$)<input id="hora" type="number" min="0" step="1" value="30" inputmode="decimal"></label>
+      <label for="minimo">Sua diária mínima (R$)<input id="minimo" type="number" min="0" step="5" value="150" inputmode="decimal"></label>
+      <label for="transporte">Transporte ida e volta (R$)<input id="transporte" type="number" min="0" step="1" value="15" inputmode="decimal"></label>
+      <label for="produtos">Produtos, se você levar (R$)<input id="produtos" type="number" min="0" step="1" value="0" inputmode="decimal"></label>
+    </div>
+    <p class="hint">Referência de mercado em 2026: nas capitais, a diária de faxina completa costuma ficar entre R$ 150 e R$ 200; no interior, entre R$ 130 e R$ 180. Ajuste à sua região.</p>
+  </section>
+
+  <div class="ticket" aria-live="polite">
+    <div class="row"><span>Tempo estimado</span><span id="rTempo">–</span></div>
+    <div class="row"><span>Trabalho</span><span id="rTrabalho">–</span></div>
+    <div class="row"><span>Transporte</span><span id="rTransp">–</span></div>
+    <div class="row" id="rowProd"><span>Produtos de limpeza</span><span id="rProd">–</span></div>
+    <div class="total"><b>Diária sugerida</b><span id="rTotal">–</span></div>
+    <p class="hint" id="aviso" hidden></p>
+  </div>
+
+  <section>
+    <h2>Texto para o cliente</h2>
+    <textarea id="texto" aria-label="Texto do orçamento"></textarea>
+    <div class="actions">
+      <a class="btn-zap" id="zap" href="https://wa.me/" target="_blank" rel="noopener">Enviar no WhatsApp</a>
+      <button id="copiar" type="button">Copiar texto</button>
+      <span class="toast" id="toast" hidden>Copiado. É só colar no WhatsApp.</span>
+    </div>
+  </section>
+
+  <section class="faq">
+    <h2>Perguntas frequentes</h2>
+    <h3>Quanto cobra uma diarista em 2026?</h3>
+    <p>Nas capitais, a diária de uma faxina completa costuma ficar entre R$ 150 e R$ 200. No interior, a média cai para algo entre R$ 130 e R$ 180. Faxina pesada, pós-obra e serviços extras, como passar roupa, justificam um valor maior.</p>
+    <h3>Como calcular o valor justo da diária?</h3>
+    <p>Defina quanto vale a sua hora, estime quantas horas a faxina vai levar e some o transporte e os produtos, se você levar. Depois compare com a sua diária mínima: se a conta der menos, cobre o mínimo, porque o dia de trabalho é seu de qualquer jeito.</p>
+    <h3>Faxina pesada e pós-obra custam quanto a mais?</h3>
+    <p>Elas demoram mais. Esta calculadora conta cerca de 40% a mais de tempo para faxina pesada e o dobro para pós-obra, que tem pó fino, respingos de tinta e cimento. Combine tudo antes de começar para evitar desentendimento.</p>
+    <h3>Trabalhar mais de 2 dias na mesma casa muda alguma coisa?</h3>
+    <p>Muda. Pela lei do trabalho doméstico (Lei Complementar 150, de 2015), quem trabalha para a mesma família mais de 2 dias por semana passa a ser empregada doméstica, com carteira assinada e direitos trabalhistas. Até 2 dias por semana, é trabalho de diarista.</p>
+  </section>
+
+  <footer>Cálculo estimado: sala e cozinha somam 1,5 h, cada quarto 1 h e cada banheiro 45 min, ajustados pelo tipo de faxina e somados aos extras. Combine o serviço com o cliente antes de começar.</footer>
+</main>
+
+<script src="../assets/app.js"></script>
+<script>
+const $=id=>document.getElementById(id);
+const atualizaZap=window.orcaEnvio('texto');
+const brl=v=>v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+function horasTxt(h){
+  const t=Math.round(h*2)/2;
+  return t.toLocaleString('pt-BR',{maximumFractionDigits:1})+' h';
+}
+function calc(){
+  const quartos=Math.max(0,+$('quartos').value||0);
+  const banheiros=Math.max(0,+$('banheiros').value||0);
+  const mult=+$('tipo').value||1;
+  let extrasH=0;const extras=[];
+  document.querySelectorAll('#extras input:checked').forEach(c=>{extrasH+=+c.dataset.h;extras.push(c.dataset.txt)});
+  const horas=(1.5+quartos*1+banheiros*0.75)*mult+extrasH;
+  const hora=+$('hora').value||0;
+  const transp=+$('transporte').value||0;
+  const prod=+$('produtos').value||0;
+  const minimo=+$('minimo').value||0;
+  const trabalho=horas*hora;
+  const conta=Math.ceil((trabalho+transp+prod)/5)*5;
+  const total=Math.max(conta,minimo);
+  $('rTempo').textContent=horasTxt(horas);
+  $('rTrabalho').textContent=brl(trabalho);
+  $('rTransp').textContent=brl(transp);
+  $('rowProd').hidden=!(prod>0);
+  $('rProd').textContent=brl(prod);
+  $('rTotal').textContent=brl(total);
+  const avisos=[];
+  if(conta<minimo)avisos.push('A conta deu '+brl(conta)+', abaixo da sua diária mínima. O valor sugerido usa o mínimo.');
+  if(horas>8)avisos.push('O serviço passa de 8 horas. Considere dividir em dois dias ou cobrar mais.');
+  $('aviso').hidden=!avisos.length;
+  $('aviso').textContent=avisos.join(' ');
+  const tipo=$('tipo').selectedOptions[0].text.split(' (')[0];
+  const casa=[quartos+' quarto'+(quartos===1?'':'s'),banheiros+' banheiro'+(banheiros===1?'':'s'),'sala e cozinha'].join(', ');
+  $('texto').value=
+`Olá, ${$('cliente').value||'tudo bem'}! Segue o orçamento da faxina:
+
+Imóvel: ${casa}
+Tipo: ${tipo.toLowerCase()}${extras.length?`\nInclui também: ${extras.join(', ')}`:''}
+Produtos de limpeza: ${prod>0?'incluídos':'por conta do cliente'}
+Tempo estimado: cerca de ${horasTxt(horas).replace(' h',' horas')}
+
+*Valor da diária: ${brl(total)}*
+
+Qualquer dúvida, estou à disposição.
+${$('nome').value}`;
+  atualizaZap();
+}
+document.querySelector('main').addEventListener('input',e=>{if(e.target.id!=='texto')calc()});
+document.querySelector('main').addEventListener('change',e=>{if(e.target.id!=='texto')calc()});
+calc();
+</script>
+<script data-goatcounter="https://marinogneto.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+</body>
+</html>
