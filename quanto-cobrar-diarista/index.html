@@ -75,10 +75,10 @@
   <section>
     <h2>Seus valores</h2>
     <div class="grid2">
-      <label for="hora">Quanto vale sua hora (R$)<input id="hora" type="number" min="0" step="1" value="30" inputmode="decimal"></label>
-      <label for="minimo">Sua diária mínima (R$)<input id="minimo" type="number" min="0" step="5" value="150" inputmode="decimal"></label>
-      <label for="transporte">Transporte ida e volta (R$)<input id="transporte" type="number" min="0" step="1" value="15" inputmode="decimal"></label>
-      <label for="produtos">Produtos, se você levar (R$)<input id="produtos" type="number" min="0" step="1" value="0" inputmode="decimal"></label>
+      <label for="hora">Quanto vale sua hora (R$)<input id="hora" type="text" value="30" inputmode="decimal" autocomplete="off" data-reais></label>
+      <label for="minimo">Sua diária mínima (R$)<input id="minimo" type="text" value="150" inputmode="decimal" autocomplete="off" data-reais></label>
+      <label for="transporte">Transporte ida e volta (R$)<input id="transporte" type="text" value="15" inputmode="decimal" autocomplete="off" data-reais></label>
+      <label for="produtos">Produtos, se você levar (R$)<input id="produtos" type="text" value="0" inputmode="decimal" autocomplete="off" data-reais></label>
     </div>
     <p class="hint">Os valores já preenchidos são só um exemplo. Use os seus: eles ficam guardados neste aparelho para a próxima vez. <button class="link" id="limpar-valores" type="button">Voltar ao exemplo</button></p>
     <p class="hint">Para ter uma ideia: em 2026, a diária de faxina completa costuma ficar entre R$ 150 e R$ 200 nas capitais e entre R$ 130 e R$ 180 no interior, mas o valor varia muito de uma cidade para outra.</p>
@@ -86,7 +86,7 @@
       <label for="ajusteTipo">Ajuste na diária
         <select id="ajusteTipo"><option value="1">Extra (+)</option><option value="-1">Desconto (−)</option></select>
       </label>
-      <label for="ajuste">Valor (R$)<input id="ajuste" type="number" min="0" step="1" value="0" inputmode="decimal"></label>
+      <label for="ajuste">Valor (R$)<input id="ajuste" type="text" value="0" inputmode="decimal" autocomplete="off" data-reais></label>
       <label for="ajusteDesc">O que é<input id="ajusteDesc" placeholder="Ex.: desconto cliente fixo" maxlength="60"></label>
     </div>
     <p class="hint">Opcional. Use "Extra" para cobrar algo a mais, como um local de difícil acesso ou uma faxina em feriado. Use "Desconto" para, por exemplo, um cliente fixo que chama toda semana. O que você escrever em "O que é" aparece no orçamento.</p>
@@ -130,6 +130,8 @@
 <script src="../assets/app.js"></script>
 <script>
 const $=id=>document.getElementById(id);
+const R=window.orcaReais||(id=>+String($(id).value).replace(/\./g,'').replace(',','.')||0);
+const FR=window.orcaFormataReais||(n=>String(n));
 const atualizaZap=window.orcaEnvio('texto');
 const brl=v=>v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
 function horasTxt(h){
@@ -143,14 +145,14 @@ function calc(){
   let extrasH=0;const extras=[];
   document.querySelectorAll('#extras input:checked').forEach(c=>{extrasH+=+c.dataset.h;extras.push(c.dataset.txt)});
   const horas=(1.5+quartos*1+banheiros*0.75)*mult+extrasH;
-  const hora=+$('hora').value||0;
-  const transp=+$('transporte').value||0;
-  const prod=+$('produtos').value||0;
-  const minimo=+$('minimo').value||0;
+  const hora=R('hora');
+  const transp=R('transporte');
+  const prod=R('produtos');
+  const minimo=R('minimo');
   const trabalho=horas*hora;
   const conta=Math.ceil((trabalho+transp+prod)/5)*5;
   const base=Math.max(conta,minimo);
-  const ajuste=Math.abs(+$('ajuste').value||0)*(+$('ajusteTipo').value||1);
+  const ajuste=Math.abs(R('ajuste'))*(+$('ajusteTipo').value||1);
   const ajusteDesc=($('ajusteDesc').value||'').trim()||(ajuste<0?'Desconto':'Extra');
   const sinal=v=>(v<0?'- ':'+ ')+brl(Math.abs(v));
   const total=Math.max(0,base+ajuste);

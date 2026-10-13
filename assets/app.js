@@ -58,6 +58,26 @@
   }
 
 
+
+  /* Campos de dinheiro: aceitam "6500", "6.500", "22,50" ou "22.50" e mostram no formato brasileiro */
+  function lerReais(texto) {
+    var t = String(texto || '').replace(/[^\d.,-]/g, '');
+    if (!t) return 0;
+    if (t.indexOf(',') >= 0) t = t.replace(/\./g, '').replace(',', '.');
+    else if ((t.match(/\./g) || []).length > 1 || /\.\d{3}$/.test(t)) t = t.replace(/\./g, '');
+    var n = parseFloat(t);
+    return isFinite(n) ? n : 0;
+  }
+  function formataReais(n) {
+    return n.toLocaleString('pt-BR', { minimumFractionDigits: n % 1 ? 2 : 0, maximumFractionDigits: 2 });
+  }
+  window.orcaReais = function (id) { var el = document.getElementById(id); return el ? lerReais(el.value) : 0; };
+  window.orcaFormataReais = formataReais;
+  document.querySelectorAll('input[data-reais]').forEach(function (el) {
+    el.value = formataReais(lerReais(el.value));
+    el.addEventListener('blur', function () { if (el.value.trim() !== '') el.value = formataReais(lerReais(el.value)); });
+  });
+
   /* Lembra os valores da pessoa neste aparelho */
   window.orcaLembrar = function (chave, ids, aoMudar) {
     var nome = 'orcabem:' + chave;
@@ -66,7 +86,7 @@
       if (salvos) {
         ids.forEach(function (id) {
           var el = document.getElementById(id);
-          if (el && salvos[id] !== undefined) el.value = salvos[id];
+          if (el && salvos[id] !== undefined) el.value = el.hasAttribute('data-reais') ? formataReais(lerReais(salvos[id])) : salvos[id];
         });
       }
     } catch (e) {}
@@ -89,7 +109,7 @@
           if (el.tagName === 'SELECT') {
             for (var i = 0; i < el.options.length; i++) if (el.options[i].defaultSelected) { el.selectedIndex = i; return; }
             el.selectedIndex = 0;
-          } else el.value = el.defaultValue;
+          } else el.value = el.hasAttribute('data-reais') ? formataReais(lerReais(el.defaultValue)) : el.defaultValue;
         });
         if (aoMudar) aoMudar();
       });

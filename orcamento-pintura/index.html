@@ -60,17 +60,17 @@
           <option value="60">Com massa corrida</option>
         </select>
       </label>
-      <label for="preco">Mão de obra (R$ por m²)<input id="preco" type="number" min="0" step="1" value="25" inputmode="decimal"></label>
+      <label for="preco">Mão de obra (R$ por m²)<input id="preco" type="text" value="25" inputmode="decimal" autocomplete="off" data-reais></label>
       <label for="demaos">Demãos<input id="demaos" type="number" min="1" max="5" value="2" inputmode="numeric"></label>
       <label for="rend">Rendimento da tinta (m² por litro, por demão)<input id="rend" type="number" min="1" step="0.5" value="10" inputmode="decimal"></label>
-      <label for="lata">Preço da lata de 18 L (R$, opcional)<input id="lata" type="number" min="0" step="1" value="0" inputmode="decimal"></label>
+      <label for="lata">Preço da lata de 18 L (R$, opcional)<input id="lata" type="text" value="0" inputmode="decimal" autocomplete="off" data-reais></label>
       <label for="prazo">Prazo estimado (dias)<input id="prazo" type="number" min="1" value="4" inputmode="numeric"></label>
     </div>
     <div class="grid3 ajuste">
       <label for="ajusteTipo">Ajuste no total
         <select id="ajusteTipo"><option value="1">Extra (+)</option><option value="-1">Desconto (−)</option></select>
       </label>
-      <label for="ajuste">Valor (R$)<input id="ajuste" type="number" min="0" step="1" value="0" inputmode="decimal"></label>
+      <label for="ajuste">Valor (R$)<input id="ajuste" type="text" value="0" inputmode="decimal" autocomplete="off" data-reais></label>
       <label for="ajusteDesc">O que é<input id="ajusteDesc" placeholder="Ex.: reparo de trincas" maxlength="60"></label>
     </div>
     <p class="hint">Opcional. Use "Extra" para cobrar algo a mais, como reparo de trincas, deslocamento ou lona e fita. Use "Desconto" para, por exemplo, desconto no pagamento à vista. O que você escrever em "O que é" aparece no orçamento.</p>
@@ -116,6 +116,8 @@
 <script src="../assets/app.js"></script>
 <script>
 const $=id=>document.getElementById(id);
+const R=window.orcaReais||(id=>+String($(id).value).replace(/\./g,'').replace(',','.')||0);
+const FR=window.orcaFormataReais||(n=>String(n));
 const atualizaZap=window.orcaEnvio('texto');
 const brl=v=>v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
 const m2=v=>v.toLocaleString('pt-BR',{maximumFractionDigits:1})+' m²';
@@ -159,11 +161,11 @@ function calc(){
   const rend=Math.max(1,+$('rend').value||10);
   const litros=area*demaos/rend;
   const latas=Math.ceil(litros/18*2)/2; // meia lata ≈ galões
-  const preco=+$('preco').value||0;
+  const preco=R('preco');
   const mao=area*preco;
-  const lata=+$('lata').value||0;
+  const lata=R('lata');
   const mat=lata>0?Math.ceil(litros/18)*lata:0;
-  const ajuste=Math.abs(+$('ajuste').value||0)*(+$('ajusteTipo').value||1);
+  const ajuste=Math.abs(R('ajuste'))*(+$('ajusteTipo').value||1);
   const ajusteDesc=($('ajusteDesc').value||'').trim()||(ajuste<0?'Desconto':'Ajuste');
   const total=Math.max(0,mao+mat+ajuste);
   const sinal=v=>(v<0?'- ':'+ ')+brl(Math.abs(v));
@@ -199,7 +201,7 @@ ${$('pintor').value}`;
 }
 $('add').onclick=()=>{rooms.push({nome:'Novo cômodo',c:3,l:3,h:2.7,portas:1,janelas:1,teto:false});renderRooms();calc()};
 $('ajusteTipo').onchange=calc;
-$('tipo').onchange=()=>{$('preco').value=$('tipo').value;calc()};
+$('tipo').onchange=()=>{$('preco').value=FR(+$('tipo').value);$('preco').dispatchEvent(new Event('input'));calc()};
 ['preco','demaos','rend','lata','prazo','pintor','cliente','ajuste','ajusteDesc','ajusteTipo'].forEach(id=>$(id).addEventListener('input',calc));
 if(window.orcaLembrar)window.orcaLembrar('pintura',['pintor','tipo','preco','demaos','rend','lata','prazo'],calc);
 renderRooms();calc();
