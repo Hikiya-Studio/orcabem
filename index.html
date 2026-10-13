@@ -28,7 +28,7 @@ html,body{margin:0}
 body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:17px;line-height:1.55}
 .wrap{max-width:640px;margin:0 auto;padding-inline:16px;padding-block:36px 56px;display:grid;gap:28px}
 .brand{font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:-.01em}
-.brand span{color:var(--accent)}
+.brand .name span{color:var(--accent)}
 h1{font-family:var(--display);font-weight:800;font-size:clamp(30px,8vw,44px);line-height:1.05;margin:0;text-wrap:balance}
 .lede{color:var(--muted);margin:10px 0 0;max-width:58ch}
 .tools{display:grid;gap:12px}
@@ -54,7 +54,7 @@ footer{font-size:14px;color:var(--muted);border-top:1px solid var(--line);paddin
 </head>
 <body>
 <main class="wrap">
-  <div class="bar"><div class="brand"><img src="favicon.svg" alt="" width="28" height="28">orça<span>bem</span></div><button class="theme" id="tema" type="button">Modo</button></div>
+  <div class="bar"><div class="brand"><img src="favicon.svg" alt="" width="28" height="28"><span class="name">orça<span>bem</span></span></div><button class="theme" id="tema" type="button">Modo</button></div>
   <header>
     <h1>Orçamento pronto, cliente fechado</h1>
     <p class="lede">Calculadoras grátis para quem trabalha por conta própria. Informe as medidas, veja quanto cobrar e mande o orçamento direto no WhatsApp. Sem cadastro.</p>

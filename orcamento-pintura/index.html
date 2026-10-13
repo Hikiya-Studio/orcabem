@@ -70,7 +70,7 @@ footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);paddin
 @media (max-width:420px){.grid3{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .top{max-width:640px;margin:0 auto;padding-inline:16px;padding-block:14px 0;display:flex;justify-content:space-between;align-items:center}
 .brand{font-family:var(--display);font-weight:800;font-size:20px;color:var(--fg);text-decoration:none;letter-spacing:-.01em}
-.brand span{color:var(--accent)}
+.brand .name span{color:var(--accent)}
 .theme{font:inherit;font-size:14px;cursor:pointer;background:var(--surface);color:var(--fg);border:1px solid var(--line);border-radius:999px;padding:6px 12px}
 .theme:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .brand{display:inline-flex;align-items:center;gap:8px}
@@ -81,7 +81,7 @@ footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);paddin
 </head>
 <body>
 
-<nav class="top"><a class="brand" href="../"><img src="../favicon.svg" alt="" width="28" height="28">orça<span>bem</span></a><button class="theme" id="tema" type="button">Modo</button></nav>
+<nav class="top"><a class="brand" href="../"><img src="../favicon.svg" alt="" width="28" height="28"><span class="name">orça<span>bem</span></span></a><button class="theme" id="tema" type="button">Modo</button></nav>
 <main class="wrap">
   <header>
     <div class="eyebrow">Para pintores autônomos</div>
