@@ -80,7 +80,8 @@
       <label for="transporte">Transporte ida e volta (R$)<input id="transporte" type="number" min="0" step="1" value="15" inputmode="decimal"></label>
       <label for="produtos">Produtos, se você levar (R$)<input id="produtos" type="number" min="0" step="1" value="0" inputmode="decimal"></label>
     </div>
-    <p class="hint">Referência de mercado em 2026: nas capitais, a diária de faxina completa costuma ficar entre R$ 150 e R$ 200; no interior, entre R$ 130 e R$ 180. Ajuste à sua região.</p>
+    <p class="hint">Os valores já preenchidos são só um exemplo. Use os seus: eles ficam guardados neste aparelho para a próxima vez. <button class="link" id="limpar-valores" type="button">Voltar ao exemplo</button></p>
+    <p class="hint">Para ter uma ideia: em 2026, a diária de faxina completa costuma ficar entre R$ 150 e R$ 200 nas capitais e entre R$ 130 e R$ 180 no interior, mas o valor varia muito de uma cidade para outra.</p>
   </section>
 
   <div class="ticket" aria-live="polite">
@@ -169,6 +170,7 @@ ${$('nome').value}`;
 }
 document.querySelector('main').addEventListener('input',e=>{if(e.target.id!=='texto')calc()});
 document.querySelector('main').addEventListener('change',e=>{if(e.target.id!=='texto')calc()});
+if(window.orcaLembrar)window.orcaLembrar('diarista',['nome','hora','minimo','transporte','produtos'],calc);
 calc();
 </script>
 <script data-goatcounter="https://marinogneto.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>

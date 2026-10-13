@@ -57,6 +57,45 @@
     });
   }
 
+
+  /* Lembra os valores da pessoa neste aparelho */
+  window.orcaLembrar = function (chave, ids, aoMudar) {
+    var nome = 'orcabem:' + chave;
+    try {
+      var salvos = JSON.parse(localStorage.getItem(nome) || 'null');
+      if (salvos) {
+        ids.forEach(function (id) {
+          var el = document.getElementById(id);
+          if (el && salvos[id] !== undefined) el.value = salvos[id];
+        });
+      }
+    } catch (e) {}
+    function salva() {
+      var dados = {};
+      ids.forEach(function (id) { var el = document.getElementById(id); if (el) dados[id] = el.value; });
+      try { localStorage.setItem(nome, JSON.stringify(dados)); } catch (e) {}
+    }
+    ids.forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) { el.addEventListener('input', salva); el.addEventListener('change', salva); }
+    });
+    var limpar = document.getElementById('limpar-valores');
+    if (limpar) {
+      limpar.addEventListener('click', function () {
+        try { localStorage.removeItem(nome); } catch (e) {}
+        ids.forEach(function (id) {
+          var el = document.getElementById(id);
+          if (!el) return;
+          if (el.tagName === 'SELECT') {
+            for (var i = 0; i < el.options.length; i++) if (el.options[i].defaultSelected) { el.selectedIndex = i; return; }
+            el.selectedIndex = 0;
+          } else el.value = el.defaultValue;
+        });
+        if (aoMudar) aoMudar();
+      });
+    }
+  };
+
   /* Envio do texto: WhatsApp e copiar */
   window.orcaEnvio = function (idTexto) {
     var texto = document.getElementById(idTexto);

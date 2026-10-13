@@ -1,7 +1,7 @@
 /* OrçaBem: guarda as páginas para funcionarem sem internet.
-   Páginas: busca na rede primeiro (para receber atualizações) e usa a cópia guardada se estiver offline.
-   Arquivos e fontes: usa a cópia guardada e atualiza em segundo plano. */
-const VERSAO = 'orcabem-v1';
+   Páginas e arquivos do site: busca na rede primeiro (para receber atualizações) e usa a cópia guardada se estiver offline.
+   Fontes: usa a cópia guardada e atualiza em segundo plano. */
+const VERSAO = 'orcabem-v2';
 const ARQUIVOS = [
   './',
   './orcamento-pintura/',
@@ -34,7 +34,7 @@ self.addEventListener('fetch', (e) => {
   const fonte = url.hostname === 'fonts.googleapis.com' || url.hostname === 'fonts.gstatic.com';
   if (url.origin !== self.location.origin && !fonte) return;
 
-  if (req.mode === 'navigate') {
+  if (url.origin === self.location.origin) {
     e.respondWith(
       fetch(req)
         .then((res) => {
@@ -42,7 +42,7 @@ self.addEventListener('fetch', (e) => {
           caches.open(VERSAO).then((c) => c.put(req, copia));
           return res;
         })
-        .catch(() => caches.match(req).then((r) => r || caches.match('./')))
+        .catch(() => caches.match(req).then((r) => r || (req.mode === 'navigate' ? caches.match('./') : Response.error())))
     );
     return;
   }

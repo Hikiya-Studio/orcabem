@@ -66,7 +66,8 @@
       <label for="lata">Preço da lata de 18 L (R$, opcional)<input id="lata" type="number" min="0" step="1" value="0" inputmode="decimal"></label>
       <label for="prazo">Prazo estimado (dias)<input id="prazo" type="number" min="1" value="4" inputmode="numeric"></label>
     </div>
-    <p class="hint">Referência de mercado em 2026: repintura simples costuma ficar entre R$ 15 e R$ 45 por m² de parede; com massa corrida, acima de R$ 40. Ajuste à sua região.</p>
+    <p class="hint">Os valores já preenchidos são só um exemplo. Use o seu preço: ele fica guardado neste aparelho para a próxima vez. <button class="link" id="limpar-valores" type="button">Voltar ao exemplo</button></p>
+    <p class="hint">Para ter uma ideia: em 2026, a repintura simples costuma ficar entre R$ 15 e R$ 45 por m² de parede, mas o preço varia muito de uma região para outra.</p>
   </section>
 
   <div class="ticket" aria-live="polite">
@@ -184,6 +185,7 @@ ${$('pintor').value}`;
 $('add').onclick=()=>{rooms.push({nome:'Novo cômodo',c:3,l:3,h:2.7,portas:1,janelas:1,teto:false});renderRooms();calc()};
 $('tipo').onchange=()=>{$('preco').value=$('tipo').value;calc()};
 ['preco','demaos','rend','lata','prazo','pintor','cliente'].forEach(id=>$(id).addEventListener('input',calc));
+if(window.orcaLembrar)window.orcaLembrar('pintura',['pintor','tipo','preco','demaos','rend','lata','prazo'],calc);
 renderRooms();calc();
 </script>
 
