@@ -48,4 +48,4 @@ Página própria em `/nome-com-hifen/` (HTML + `calculo.js`, sem script embutido
 - Domínio ligado em 13/10/2026 (arquivo `CNAME`). Google Search Console verificado por DNS (registro TXT no Registro.br: não apagar) e sitemap enviado em 13/10/2026. "Enforce HTTPS" ativado.
 - Calculadora de eletricista publicada em 13/10/2026. Próxima calculadora ainda não escolhida.
 - Monetização só depois de ter visitas: primeiro links de afiliado discretos, depois anúncios, depois versão paga (logo do profissional, PDF, histórico).
-- Divulgação cruzada com o sistema de agenda da Hikiya (nome provável: HoraBem), só quando ele estiver no ar: linha discreta no rodapé ("Da mesma equipe: ...") e sugestão contextual depois do resultado da diarista. Nada de banner no meio das calculadoras.
+- Divulgação cruzada com o sistema de agenda da Hikiya (AgendarBem, agendarbem.com.br), só quando ele estiver no ar: linha discreta no rodapé ("Da mesma equipe: ...") e sugestão contextual depois do resultado da diarista. Nada de banner no meio das calculadoras.
