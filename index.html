@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>OrçaBem: orçamentos prontos para profissionais autônomos</title>
+<meta name="description" content="Calculadoras grátis para pintores e outros profissionais autônomos calcularem o preço do serviço e mandarem o orçamento pronto no WhatsApp.">
+<link rel="canonical" href="https://orcabem.com.br/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+<style>
+:root{
+  --bg:#f3f1ec; --surface:#fffdf8; --fg:#1d2433; --muted:#5d6475; --line:#d9d4c7;
+  --accent:#1f4fa3; --tape:#e7c873; --tape-fg:#3a2f12;
+  --display:"Archivo",system-ui,sans-serif; --body:"Atkinson Hyperlegible",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root{
+  --bg:#141821; --surface:#1c2230; --fg:#e8e6df; --muted:#a3a9b8; --line:#2f3747;
+  --accent:#7ea6ec; --tape:#c9a94e; --tape-fg:#1d1708; color-scheme:dark}}
+html,body{margin:0}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:17px;line-height:1.55}
+.wrap{max-width:640px;margin:0 auto;padding-inline:16px;padding-block:36px 56px;display:grid;gap:28px}
+.brand{font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:-.01em}
+.brand span{color:var(--accent)}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(30px,8vw,44px);line-height:1.05;margin:0;text-wrap:balance}
+.lede{color:var(--muted);margin:10px 0 0;max-width:58ch}
+.tools{display:grid;gap:12px}
+.tool{display:grid;gap:4px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;text-decoration:none;color:var(--fg)}
+.tool:hover,.tool:focus-visible{border-color:var(--accent);outline:none}
+.tool b{font-family:var(--display);font-size:19px}
+.tool span{color:var(--muted);font-size:15px}
+.soon{opacity:.6}
+.tag{justify-self:start;background:var(--tape);color:var(--tape-fg);font-family:var(--display);font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:3px 10px;margin-bottom:4px}
+footer{font-size:14px;color:var(--muted);border-top:1px solid var(--line);padding-top:14px}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="brand">orca<span>bem</span></div>
+  <header>
+    <h1>Orçamento pronto, cliente fechado</h1>
+    <p class="lede">Calculadoras grátis para quem trabalha por conta própria. Informe as medidas, veja quanto cobrar e mande o orçamento direto no WhatsApp. Sem cadastro.</p>
+  </header>
+  <section class="tools" aria-label="Ferramentas">
+    <a class="tool" href="/orcamento-pintura/">
+      <span class="tag">Disponível</span>
+      <b>Orçamento de pintura</b>
+      <span>Área de parede, tinta, mão de obra por m² e texto pronto para o cliente.</span>
+    </a>
+    <div class="tool soon">
+      <span class="tag">Em breve</span>
+      <b>Quanto cobrar de diária (diarista)</b>
+      <span>Calcule a diária pelo tamanho da casa, tipo de faxina e deslocamento.</span>
+    </div>
+    <div class="tool soon">
+      <span class="tag">Em breve</span>
+      <b>Orçamento de instalação elétrica</b>
+      <span>Pontos, tomadas e mão de obra em um orçamento só.</span>
+    </div>
+  </section>
+  <footer>OrçaBem é gratuito. Os valores são estimativas; confira as medidas no local antes de fechar o preço.</footer>
+</main>
+</body>
+</html>

@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Orçamento de Pintura: calcule o m² e a tinta grátis | OrçaBem</title>
+<meta name="description" content="Calculadora grátis para pintores: informe as medidas dos cômodos e receba a área de parede, a tinta necessária, o valor da mão de obra e o orçamento pronto para o WhatsApp.">
+<link rel="canonical" href="https://orcabem.com.br/orcamento-pintura/">
+<meta property="og:title" content="Orçamento de Pintura grátis | OrçaBem">
+<meta property="og:description" content="Calcule m², tinta e mão de obra e mande o orçamento no WhatsApp em 2 minutos.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://orcabem.com.br/orcamento-pintura/">
+<meta property="og:locale" content="pt_BR">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Atkinson+Hyperlegible:wght@400;700&family=JetBrains+Mono:wght@500&display=swap">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Orçamento de Pintura","url":"https://orcabem.com.br/orcamento-pintura/","applicationCategory":"BusinessApplication","operatingSystem":"Web","inLanguage":"pt-BR","offers":{"@type":"Offer","price":"0","priceCurrency":"BRL"}}
+</script>
+<style>
+/* Layout: one narrow column — form of rooms on top, a "fita crepe" result ticket below, copy-to-WhatsApp text last */
+:root{
+  --bg:#f3f1ec; --surface:#fffdf8; --fg:#1d2433; --muted:#5d6475; --line:#d9d4c7;
+  --accent:#1f4fa3; --tape:#e7c873; --tape-fg:#3a2f12; --ok:#2f7a4c;
+  --display:"Archivo",system-ui,sans-serif; --body:"Atkinson Hyperlegible",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#141821; --surface:#1c2230; --fg:#e8e6df; --muted:#a3a9b8; --line:#2f3747;
+  --accent:#7ea6ec; --tape:#c9a94e; --tape-fg:#1d1708; --ok:#6cc08f; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141821; --surface:#1c2230; --fg:#e8e6df; --muted:#a3a9b8; --line:#2f3747;
+  --accent:#7ea6ec; --tape:#c9a94e; --tape-fg:#1d1708; --ok:#6cc08f; color-scheme:dark}
+html,body{margin:0}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.5}
+.wrap{max-width:640px;margin:0 auto;padding-inline:16px;padding-block:28px 48px;display:grid;gap:22px}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(28px,7vw,40px);line-height:1.05;margin:0;text-wrap:balance;letter-spacing:-.01em}
+.lede{color:var(--muted);margin:6px 0 0;max-width:60ch}
+.eyebrow{font-family:var(--display);font-weight:700;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+section{display:grid;gap:12px}
+h2{font-family:var(--display);font-weight:700;font-size:19px;margin:0}
+label{display:grid;gap:4px;font-size:13px;color:var(--muted);min-width:0}
+input,select{font:inherit;font-size:16px;color:var(--fg);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:9px 10px;width:100%;box-sizing:border-box;font-variant-numeric:tabular-nums}
+input:focus-visible,select:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.room{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px;display:grid;gap:10px}
+.room-head{display:flex;gap:8px;align-items:center}
+.room-head input{font-weight:700}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.chk{display:flex;gap:8px;align-items:center;font-size:14px;color:var(--fg)}
+.chk input{width:auto}
+button{font:inherit;cursor:pointer;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--fg);padding:9px 14px}
+.btn-x{padding:6px 10px;color:var(--muted);flex:none}
+.btn-add{border-style:dashed;color:var(--accent);font-weight:700}
+.btn-main{background:var(--accent);border-color:var(--accent);color:var(--bg);font-weight:700}
+.ticket{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:26px 16px 16px;display:grid;gap:10px}
+.ticket::before{content:"RESULTADO";position:absolute;top:-12px;left:18px;background:var(--tape);color:var(--tape-fg);font-family:var(--display);font-weight:700;font-size:12px;letter-spacing:.14em;padding:5px 14px;transform:rotate(-2deg);box-shadow:0 1px 2px rgba(0,0,0,.15)}
+.row{display:flex;justify-content:space-between;gap:12px;border-bottom:1px dashed var(--line);padding-bottom:8px}
+.row span:last-child{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right}
+.total{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding-top:4px}
+.total b{font-family:var(--display);font-size:15px}
+.total span{font-family:var(--mono);font-size:clamp(24px,6vw,30px);color:var(--accent)}
+.hint{font-size:13px;color:var(--muted);margin:0}
+textarea{font:inherit;font-size:14px;width:100%;box-sizing:border-box;min-height:220px;background:var(--surface);color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:10px;resize:vertical}
+.actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.toast{color:var(--ok);font-size:14px}
+footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:14px}
+@media (max-width:420px){.grid3{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.top{max-width:640px;margin:0 auto;padding-inline:16px;padding-block:14px 0;display:flex;justify-content:space-between;align-items:center}
+.brand{font-family:var(--display);font-weight:800;font-size:20px;color:var(--fg);text-decoration:none;letter-spacing:-.01em}
+.brand span{color:var(--accent)}
+.faq h3{font-family:var(--display);font-size:16px;margin:10px 0 2px}
+.faq p{margin:0;color:var(--muted);max-width:62ch}
+</style>
+</head>
+<body>
+
+<nav class="top"><a class="brand" href="/">orca<span>bem</span></a></nav>
+<main class="wrap">
+  <header>
+    <div class="eyebrow">Para pintores autônomos</div>
+    <h1>Calcule e mande o orçamento de pintura em 2 minutos</h1>
+    <p class="lede">Informe as medidas dos cômodos. A ferramenta calcula a área real de parede, a tinta e a mão de obra, e monta o texto pronto para enviar no WhatsApp.</p>
+  </header>
+
+  <section>
+    <h2>Seus dados</h2>
+    <div class="grid2">
+      <label for="pintor">Seu nome<input id="pintor" value="João Pinturas"></label>
+      <label for="cliente">Cliente<input id="cliente" value="Ana (exemplo)"></label>
+    </div>
+  </section>
+
+  <section>
+    <h2>Cômodos</h2>
+    <p class="hint">Medidas em metros. Os valores abaixo são um exemplo; troque pelos do seu serviço.</p>
+    <div id="rooms" style="display:grid;gap:10px"></div>
+    <button class="btn-add" id="add" type="button">+ Adicionar cômodo</button>
+  </section>
+
+  <section>
+    <h2>Serviço e preço</h2>
+    <div class="grid2">
+      <label for="tipo">Tipo de serviço
+        <select id="tipo">
+          <option value="25">Repintura simples</option>
+          <option value="40">Com lixamento e selador</option>
+          <option value="60">Com massa corrida</option>
+        </select>
+      </label>
+      <label for="preco">Mão de obra (R$ por m²)<input id="preco" type="number" min="0" step="1" value="25" inputmode="decimal"></label>
+      <label for="demaos">Demãos<input id="demaos" type="number" min="1" max="5" value="2" inputmode="numeric"></label>
+      <label for="rend">Rendimento da tinta (m² por litro, por demão)<input id="rend" type="number" min="1" step="0.5" value="10" inputmode="decimal"></label>
+      <label for="lata">Preço da lata de 18 L (R$, opcional)<input id="lata" type="number" min="0" step="1" value="0" inputmode="decimal"></label>
+      <label for="prazo">Prazo estimado (dias)<input id="prazo" type="number" min="1" value="4" inputmode="numeric"></label>
+    </div>
+    <p class="hint">Referência de mercado em 2026: repintura simples costuma ficar entre R$ 15 e R$ 45 por m² de parede; com massa corrida, acima de R$ 40. Ajuste à sua região.</p>
+  </section>
+
+  <div class="ticket" aria-live="polite">
+    <div class="row"><span>Área de parede</span><span id="rParede">–</span></div>
+    <div class="row"><span>Área de teto</span><span id="rTeto">–</span></div>
+    <div class="row"><span>Área total a pintar</span><span id="rArea">–</span></div>
+    <div class="row"><span>Tinta necessária</span><span id="rTinta">–</span></div>
+    <div class="row"><span>Mão de obra</span><span id="rMao">–</span></div>
+    <div class="row" id="rowMat"><span>Material (tinta)</span><span id="rMat">–</span></div>
+    <div class="total"><b>Total do orçamento</b><span id="rTotal">–</span></div>
+  </div>
+
+  <section>
+    <h2>Texto para o cliente</h2>
+    <textarea id="texto" aria-label="Texto do orçamento"></textarea>
+    <div class="actions">
+      <button class="btn-main" id="copiar" type="button">Copiar texto</button>
+      <span class="toast" id="toast" hidden>Copiado. É só colar no WhatsApp.</span>
+    </div>
+  </section>
+
+
+  <section class="faq">
+    <h2>Perguntas frequentes</h2>
+    <h3>Quanto cobrar por m² de pintura?</h3>
+    <p>Em 2026, a mão de obra de repintura simples costuma ficar entre R$ 15 e R$ 45 por m² de parede. Com lixamento pesado, selador ou massa corrida, o valor passa de R$ 40 e pode chegar a R$ 65 por m². O preço varia com a região e o estado das paredes.</p>
+    <h3>Como calcular a área de parede de um cômodo?</h3>
+    <p>Some os quatro lados do cômodo (o perímetro) e multiplique pelo pé-direito. Depois desconte portas e janelas. Um cômodo de 4 × 3 m com 2,7 m de altura tem 37,8 m² de parede antes dos descontos. Por isso a área a pintar é bem maior que a área do piso.</p>
+    <h3>Quanta tinta preciso?</h3>
+    <p>Uma tinta acrílica comum rende perto de 10 m² por litro em cada demão. Multiplique a área pelo número de demãos e divida pelo rendimento. Confira o rendimento indicado na lata da marca que você usa.</p>
+  </section>
+
+  <footer>Cálculo estimado: portas descontam 1,6 m² e janelas 1,5 m² cada. A área de parede é o perímetro do cômodo vezes o pé-direito. Confira as medidas no local antes de fechar o preço.</footer>
+</main>
+
+<script>
+const $=id=>document.getElementById(id);
+const brl=v=>v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+const m2=v=>v.toLocaleString('pt-BR',{maximumFractionDigits:1})+' m²';
+let rooms=[
+  {nome:'Sala',c:5,l:4,h:2.7,portas:1,janelas:1,teto:true},
+  {nome:'Quarto',c:3.5,l:3,h:2.7,portas:1,janelas:1,teto:true},
+  {nome:'Cozinha',c:3,l:2.5,h:2.7,portas:1,janelas:1,teto:false}
+];
+let uid=0;
+function renderRooms(){
+  const box=$('rooms');box.innerHTML='';
+  rooms.forEach((r,i)=>{
+    const id='r'+i;
+    const el=document.createElement('div');el.className='room';
+    el.innerHTML=`<div class="room-head"><input id="${id}n" aria-label="Nome do cômodo" value="${r.nome.replace(/"/g,'&quot;')}"><button class="btn-x" type="button" aria-label="Remover cômodo">Remover</button></div>
+    <div class="grid3">
+      <label for="${id}c">Comprimento<input id="${id}c" type="number" min="0" step="0.1" inputmode="decimal" value="${r.c}"></label>
+      <label for="${id}l">Largura<input id="${id}l" type="number" min="0" step="0.1" inputmode="decimal" value="${r.l}"></label>
+      <label for="${id}h">Pé-direito<input id="${id}h" type="number" min="0" step="0.1" inputmode="decimal" value="${r.h}"></label>
+      <label for="${id}p">Portas<input id="${id}p" type="number" min="0" inputmode="numeric" value="${r.portas}"></label>
+      <label for="${id}j">Janelas<input id="${id}j" type="number" min="0" inputmode="numeric" value="${r.janelas}"></label>
+      <label class="chk" for="${id}t" style="align-self:end;padding-bottom:10px"><input id="${id}t" type="checkbox" ${r.teto?'checked':''}> Pintar teto</label>
+    </div>`;
+    el.querySelector('.btn-x').onclick=()=>{rooms.splice(i,1);renderRooms();calc()};
+    el.addEventListener('input',()=>{
+      r.nome=$(id+'n').value;r.c=+$(id+'c').value||0;r.l=+$(id+'l').value||0;r.h=+$(id+'h').value||0;
+      r.portas=+$(id+'p').value||0;r.janelas=+$(id+'j').value||0;r.teto=$(id+'t').checked;calc();
+    });
+    box.appendChild(el);
+  });
+}
+function calc(){
+  let parede=0,teto=0;const linhas=[];
+  rooms.forEach(r=>{
+    const p=Math.max(0,2*(r.c+r.l)*r.h-r.portas*1.6-r.janelas*1.5);
+    const t=r.teto?r.c*r.l:0;parede+=p;teto+=t;
+    linhas.push(`• ${r.nome||'Cômodo'}: ${m2(p+t)}${r.teto?' (com teto)':''}`);
+  });
+  const area=parede+teto;
+  const demaos=Math.max(1,+$('demaos').value||1);
+  const rend=Math.max(1,+$('rend').value||10);
+  const litros=area*demaos/rend;
+  const latas=Math.ceil(litros/18*2)/2; // meia lata ≈ galões
+  const preco=+$('preco').value||0;
+  const mao=area*preco;
+  const lata=+$('lata').value||0;
+  const mat=lata>0?Math.ceil(litros/18)*lata:0;
+  const total=mao+mat;
+  $('rParede').textContent=m2(parede);
+  $('rTeto').textContent=m2(teto);
+  $('rArea').textContent=m2(area);
+  $('rTinta').textContent=`${litros.toLocaleString('pt-BR',{maximumFractionDigits:0})} L (≈ ${latas.toLocaleString('pt-BR')} lata${latas===1?'':'s'} de 18 L)`;
+  $('rMao').textContent=brl(mao);
+  $('rowMat').hidden=!(lata>0);
+  $('rMat').textContent=brl(mat);
+  $('rTotal').textContent=brl(total);
+  const tipo=$('tipo').selectedOptions[0].text;
+  $('texto').value=
+`Olá, ${$('cliente').value||'tudo bem'}! Segue o orçamento de pintura:
+
+${linhas.join('\n')}
+
+Serviço: ${tipo.toLowerCase()}, ${demaos} demão${demaos>1?'s':''}
+Área total: ${m2(area)}
+Tinta estimada: ${litros.toLocaleString('pt-BR',{maximumFractionDigits:0})} litros
+
+Mão de obra: ${brl(mao)}${mat>0?`\nMaterial (tinta): ${brl(mat)}`:'\nMaterial: por conta do cliente'}
+*Total: ${brl(total)}*
+
+Prazo estimado: ${$('prazo').value||'-'} dias úteis
+Orçamento válido por 15 dias.
+
+${$('pintor').value}`;
+}
+$('add').onclick=()=>{rooms.push({nome:'Novo cômodo',c:3,l:3,h:2.7,portas:1,janelas:1,teto:false});renderRooms();calc()};
+$('tipo').onchange=()=>{$('preco').value=$('tipo').value;calc()};
+['preco','demaos','rend','lata','prazo','pintor','cliente'].forEach(id=>$(id).addEventListener('input',calc));
+$('copiar').onclick=()=>{
+  const t=$('texto').value;
+  const ok=()=>{$('toast').hidden=false;setTimeout(()=>$('toast').hidden=true,2500)};
+  try{navigator.clipboard.writeText(t).then(ok,()=>{$('texto').select();});}catch(e){$('texto').select();}
+};
+renderRooms();calc();
+</script>
+
+</body>
+</html>

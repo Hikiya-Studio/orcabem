@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://orcabem.com.br/sitemap.xml
