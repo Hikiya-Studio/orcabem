@@ -35,12 +35,17 @@ h1{font-family:var(--display);font-weight:800;font-size:clamp(30px,8vw,44px);lin
 .soon b,.soon span:not(.tag){opacity:.7}
 .tool .tag{justify-self:start;background:var(--tape);color:var(--tape-fg);font-weight:700;font-family:var(--display);font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:3px 10px;margin-bottom:4px}
 .soon .tag{background:transparent;color:var(--muted);box-shadow:inset 0 0 0 1px var(--line)}
+.preview{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:grid;gap:8px}
+.preview small{font-family:var(--display);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.bubble{justify-self:start;max-width:34ch;background:color-mix(in srgb,var(--accent) 14%,var(--surface));border-radius:12px 12px 12px 3px;padding:10px 12px;font-size:15px;line-height:1.45;white-space:pre-line}
+.trust{display:grid;gap:6px;margin:0;padding:0;list-style:none;color:var(--muted);font-size:15px}
+.trust li::before{content:"✓ ";color:var(--accent);font-weight:700}
 footer{font-size:14px;color:var(--muted);border-top:1px solid var(--line);padding-top:14px}
 </style>
 </head>
 <body>
 <main class="wrap">
-  <div class="brand">orca<span>bem</span></div>
+  <div class="brand">orça<span>bem</span></div>
   <header>
     <h1>Orçamento pronto, cliente fechado</h1>
     <p class="lede">Calculadoras grátis para quem trabalha por conta própria. Informe as medidas, veja quanto cobrar e mande o orçamento direto no WhatsApp. Sem cadastro.</p>
@@ -62,6 +67,21 @@ footer{font-size:14px;color:var(--muted);border-top:1px solid var(--line);paddin
       <span>Pontos, tomadas e mão de obra em um orçamento só.</span>
     </div>
   </section>
+  <section class="preview" aria-label="Exemplo do resultado">
+    <small>Exemplo do que o cliente recebe</small>
+    <div class="bubble">Olá, Ana! Segue o orçamento de pintura:
+• Sala: 65,5 m² (com teto)
+• Quarto: 42,5 m² (com teto)
+
+Mão de obra: R$ 2.700,00
+<b>Total: R$ 2.700,00</b>
+Prazo estimado: 4 dias úteis</div>
+  </section>
+  <ul class="trust">
+    <li>Grátis e sem cadastro</li>
+    <li>Funciona no celular, direto no navegador</li>
+    <li>Seus dados ficam no seu aparelho; nada é enviado para nós</li>
+  </ul>
   <footer>OrçaBem é gratuito. Os valores são estimativas; confira as medidas no local antes de fechar o preço.</footer>
 </main>
 </body>
