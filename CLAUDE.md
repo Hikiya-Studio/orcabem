@@ -30,7 +30,7 @@ Site de calculadoras grátis para profissionais autônomos brasileiros (pintor, 
 - `orcamento-pintura/`: área de parede, tinta, mão de obra por m², material opcional, ajuste (extra ou desconto) com descrição.
 - `quanto-cobrar-diarista/`: horas estimadas por quartos, banheiros, tipo de faxina e extras; valor da hora, diária mínima, transporte, produtos, ajuste.
 - `orcamento-eletricista/`: lista de serviços (quantidade × preço por unidade; pontos de tomada e luz, troca, luminária, chuveiro, ventilador, disjuntor, circuito, quadro) e serviços extras com nome livre; valor mínimo do atendimento, deslocamento, material, prazo, garantia, ajuste. Os preços por serviço ficam guardados em `orcabem:eletricista-precos`.
-- `privacidade/`: página de privacidade em linguagem simples (localStorage, WhatsApp, GoatCounter sem cookies e sem IP, Google Fonts, LGPD). Link "Privacidade" no rodapé de todas as páginas. Atualizar antes de qualquer mudança no uso de dados (anúncios, afiliados com rastreio, formulário de contato).
+- `privacidade/`: página de privacidade em linguagem simples (localStorage, WhatsApp, GoatCounter sem cookies e sem IP, Google Fonts, LGPD). Link "Privacidade" no rodapé de todas as páginas. Atualizar antes de qualquer mudança no uso de dados (conta do Pro, afiliados com rastreio, formulário de contato).
 - `404.html`: página de "não encontrado" do GitHub Pages. Usa links que começam com `/` (não relativos), porque aparece em qualquer pasta. Ao criar uma calculadora, acrescentar o link nela.
 - `assets/ferramenta.css`: estilos comuns das calculadoras.
 - `assets/tema.js`: aplica o tema salvo antes da página aparecer. Cada calculadora tem seu `calculo.js` na própria pasta.
@@ -53,5 +53,10 @@ Página própria em `/nome-com-hifen/` (HTML + `calculo.js`, sem script embutido
 - Contato: o Marino vai criar um e-mail (ou WhatsApp) só para o OrçaBem. Depois, colocar no rodapé de todas as páginas e na página de privacidade.
 - Domínio vence em 13/10/2027: conferir a renovação automática no Registro.br.
 - Bing Webmaster Tools configurado em 13/10/2026 (importado do Search Console).
-- Monetização só depois de ter visitas: primeiro links de afiliado discretos, depois anúncios, depois versão paga (logo do profissional, PDF, histórico).
+- Monetização (decidido em 13/10/2026): **sem anúncios**, nunca. Eles rendem pouco no Brasil, deixam o profissional com cara de amador na frente do cliente e contradizem a página de privacidade. Caminho:
+  1. Calculadoras grátis para sempre, sem cadastro.
+  2. **OrçaBem Pro** (principal receita, por volta de R$ 10 a R$ 20 por mês): PDF com logo e dados do profissional, histórico de orçamentos e clientes, mensagem sem a linha do OrçaBem e, depois, recibo e "aprovado ou não". Conta e login só para quem assina. Precisa de cobrança recorrente (Pix e cartão, ex.: Mercado Pago ou Stripe), CNPJ (MEI serve no começo) e atualização da página de privacidade antes de lançar.
+  3. Afiliados discretos só quando ajudarem de verdade (ex.: "onde comprar tinta" na pintura), nunca como banner.
+  4. Indicação entre produtos da Hikiya Studio (ver AgendarBem abaixo).
+  Quando: só depois de uso frequente medido no GoatCounter (alguns milhares de orçamentos por mês). Até lá, crescer e perguntar aos usuários o que pagariam. Conta de referência: 10 mil usuários ativos por mês × 3% pagando × R$ 14,90 ≈ R$ 4.500 por mês.
 - Divulgação cruzada com o sistema de agenda da Hikiya (AgendarBem, agendarbem.com.br), só quando ele estiver no ar: linha discreta no rodapé ("Da mesma equipe: ...") e sugestão contextual depois do resultado da diarista. Nada de banner no meio das calculadoras.
